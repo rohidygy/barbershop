@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pangkas Jaya Barbershop</title>
+<meta name="description" content="Barbershop dengan potong rambut, cukur, dan perawatan jenggot. Booking lewat WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#14213d; --bg2:#1c2c52; --ink:#f5f1e8; --muted:#b5bccb;
+  --red:#c8372d; --gold:#e3b04b; --line:rgba(245,241,232,.18);
+  --display:'Bebas Neue',Impact,sans-serif; --body:'Work Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.logo{font-family:var(--display);font-size:1.6rem;letter-spacing:.06em;text-decoration:none}
+nav a{margin-left:20px;text-decoration:none;color:var(--muted);font-size:.95rem}
+nav a:hover{color:var(--ink)}
+.stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,var(--ink) 14px 28px,#2f5bb7 28px 42px,var(--ink) 42px 56px)}
+.hero{padding:72px 0 64px}
+.hero h1{font-family:var(--display);font-size:clamp(3.4rem,11vw,7.5rem);line-height:.95;letter-spacing:.02em}
+.hero p{max-width:46ch;color:var(--muted);margin:20px 0 28px;font-size:1.1rem}
+.btn{display:inline-block;background:var(--red);color:#fff;padding:13px 26px;text-decoration:none;font-weight:600;border-radius:4px}
+.btn:hover{background:#a82a21}
+.btn.alt{background:transparent;border:1px solid var(--ink);margin-left:10px}
+.btn.alt:hover{background:var(--ink);color:var(--bg)}
+section{padding:60px 0}
+h2{font-family:var(--display);font-size:2.6rem;letter-spacing:.04em;margin-bottom:24px}
+.menu{list-style:none;padding:0;max-width:620px}
+.menu li{display:flex;align-items:baseline;gap:10px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.menu .n{font-weight:600}
+.menu small{display:block;color:var(--muted);font-weight:400}
+.menu .dots{flex:1}
+.menu .p{color:var(--gold);font-weight:600;white-space:nowrap}
+.alt-bg{background:var(--bg2)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.barber{border-left:3px solid var(--gold);padding-left:16px}
+.barber h3{font-family:var(--display);font-size:1.7rem;letter-spacing:.04em}
+.barber p{color:var(--muted);font-size:.95rem}
+.hours{max-width:360px}
+.hours div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px}
+footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+@media(max-width:560px){nav a{margin-left:12px;font-size:.85rem}.btn.alt{margin:10px 0 0}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">PANGKAS JAYA</a>
+    <nav><a href="#harga">Harga</a><a href="#tim">Barber</a><a href="#kontak">Kontak</a></nav>
+  </div>
+</header>
+<div class="stripe"></div>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <h1>Rapi dari<br>kepala sampai<br>kerah.</h1>
+    <p>Potong rambut, cukur, dan rapikan jenggot oleh barber berpengalaman. Datang langsung atau booking dulu lewat WhatsApp supaya tidak antre.</p>
+    <a class="btn" href="https://wa.me/6281234567890?text=Halo%20Pangkas%20Jaya%2C%20saya%20mau%20booking" target="_blank" rel="noopener">Booking via WhatsApp</a>
+    <a class="btn alt" href="#harga">Lihat harga</a>
+  </div>
+</section>
+
+<section id="harga" class="alt-bg">
+  <div class="wrap">
+    <h2>Daftar Harga</h2>
+    <ul class="menu">
+      <li><span class="n">Potong rambut<small>Konsultasi model, cuci, dan styling</small></span><span class="dots"></span><span class="p">Rp 40.000</span></li>
+      <li><span class="n">Cukur jenggot &amp; kumis<small>Handuk hangat dan pisau cukur</small></span><span class="dots"></span><span class="p">Rp 25.000</span></li>
+      <li><span class="n">Potong + cukur<small>Paket lengkap</small></span><span class="dots"></span><span class="p">Rp 60.000</span></li>
+      <li><span class="n">Hair coloring<small>Warna sesuai pilihan</small></span><span class="dots"></span><span class="p">Rp 150.000</span></li>
+      <li><span class="n">Potong anak (di bawah 12 tahun)</span><span class="dots"></span><span class="p">Rp 30.000</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="tim">
+  <div class="wrap">
+    <h2>Barber Kami</h2>
+    <div class="grid">
+      <div class="barber"><h3>Rudi</h3><p>10 tahun pengalaman. Ahli fade dan potongan klasik.</p></div>
+      <div class="barber"><h3>Dimas</h3><p>Spesialis model kekinian, undercut, dan texture crop.</p></div>
+      <div class="barber"><h3>Bayu</h3><p>Cukur tradisional dan perawatan jenggot.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="kontak" class="alt-bg">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Jam Buka</h2>
+      <div class="hours">
+        <div><span>Senin – Jumat</span><span>10.00 – 21.00</span></div>
+        <div><span>Sabtu</span><span>09.00 – 22.00</span></div>
+        <div><span>Minggu</span><span>11.00 – 20.00</span></div>
+      </div>
+    </div>
+    <div>
+      <h2>Lokasi</h2>
+      <p>Jl. Contoh Raya No. 12<br>Kota Anda, 12345</p>
+      <p style="margin-top:12px">WhatsApp: 0812-3456-7890<br>Instagram: @pangkasjaya</p>
+      <p style="margin-top:18px"><a class="btn" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Chat sekarang</a></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">&copy; 2026 Pangkas Jaya Barbershop</div></footer>
+</body>
+</html>
