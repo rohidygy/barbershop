@@ -16,6 +16,7 @@
 html{scroll-behavior:smooth}
 body{background-color:var(--bg);position:relative;color:var(--ink);font-family:var(--sans);line-height:1.6;padding-bottom:84px}
 a{color:inherit}
+[hidden]{display:none!important}
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
 header{position:sticky;top:0;z-index:20;background:rgba(16,35,28,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
 header .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
@@ -32,6 +33,7 @@ nav .pill{border:1px solid var(--brass);color:var(--brass2);padding:7px 16px;bor
 .btn:hover{background:var(--brass2)}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);margin-left:10px}
 .btn.ghost:hover{border-color:var(--brass)}
+.btn.sm{padding:10px 22px;font-size:.95rem}
 .facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
 .facts b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--ink);font-weight:600}
 section{padding:68px 0}
@@ -43,6 +45,25 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5vw,3rem);lin
 .person .av{width:54px;height:54px;border-radius:50%;background:var(--brass);color:#10231c;display:grid;place-items:center;font:700 1.5rem var(--serif);margin-bottom:14px}
 .person h3{font-family:var(--serif);font-size:1.5rem}
 .person p{color:var(--muted);font-size:.95rem}
+
+/* ===== GALERI MODEL RAMBUT ===== */
+.gfilter{margin-bottom:22px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
+.g{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);padding:0;color:var(--ink);font:inherit;text-align:left;cursor:pointer;display:block;width:100%}
+.g:hover{border-color:var(--brass)}
+.g .im{aspect-ratio:4/5;background:var(--bg2);display:grid;place-items:center;color:var(--muted);font-size:.85rem;text-align:center;padding:10px;overflow:hidden}
+.g .im img{width:100%;height:100%;object-fit:cover;display:block;margin:-10px;padding:0}
+.g .tx{padding:12px 14px}
+.g .tx b{font-family:var(--serif);font-size:1.25rem;display:block;font-weight:600;line-height:1.2}
+.g .tx small{color:var(--muted)}
+.g.on{border-color:var(--brass);box-shadow:0 0 0 2px var(--brass)}
+.g .ck{position:absolute;top:10px;right:10px;background:var(--brass);color:#10231c;border-radius:99px;padding:3px 12px;font-size:.8rem;font-weight:600;display:none}
+.g.on .ck{display:block}
+.pick{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px;padding:14px 18px;border:1px solid var(--brass);border-radius:14px;background:var(--card)}
+.pick span{color:var(--muted)}
+.pick b{font-family:var(--serif);font-size:1.3rem;color:var(--brass2);font-weight:600}
+
+/* ===== PEMESANAN ===== */
 .order{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start}
 .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
 .step h3{font-family:var(--serif);font-size:1.45rem;margin-bottom:14px;display:flex;gap:12px;align-items:center}
@@ -108,6 +129,7 @@ body::before{
   nav a:not(.pill){display:none}
   .btn.ghost{margin:10px 0 0}
   .pole{position:static;width:80px;margin-bottom:18px}
+  .gal{grid-template-columns:repeat(2,1fr);gap:12px}
   .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--brass);padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));justify-content:space-between;align-items:center;gap:12px}
   .bar b{font:600 1.4rem var(--serif);color:var(--brass2);display:block;line-height:1.1}
   .bar small{color:var(--muted)}
@@ -123,7 +145,7 @@ body::before{
 <header>
   <div class="wrap">
     <a class="logo" href="#" id="logo"></a>
-    <nav><a href="#tim">Barber</a><a href="#kontak">Lokasi</a><a class="pill" href="#pesan">Pesan sekarang</a></nav>
+    <nav><a href="#model">Model</a><a href="#tim">Barber</a><a href="#kontak">Lokasi</a><a class="pill" href="#pesan">Pesan sekarang</a></nav>
   </div>
 </header>
 
@@ -157,12 +179,25 @@ body::before{
     <h1 id="judul"></h1>
     <p id="deskripsi"></p>
     <a class="btn" href="#pesan">Pesan jadwal</a>
-    <a class="btn ghost" href="#tim">Kenalan dengan barber</a>
+    <a class="btn ghost" href="#model">Lihat model terbaru</a>
     <div class="facts" id="facts"></div>
   </div>
 </section>
 
-<section id="pesan" class="alt">
+<section id="model" class="alt">
+  <div class="wrap">
+    <h2>Model rambut terbaru</h2>
+    <p class="sub">Pilih kategori, lalu ketuk foto model yang kamu suka. Pilihanmu ikut terkirim saat memesan.</p>
+    <div class="chips gfilter" id="gf"></div>
+    <div class="gal" id="gal"></div>
+    <div class="pick" id="pick" hidden>
+      <div><span>Model dipilih</span><br><b id="pickName"></b></div>
+      <div><a class="btn sm" href="#pesan">Lanjut pesan</a> <button class="btn sm ghost" type="button" id="pickClear">Batalkan</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="pesan">
   <div class="wrap">
     <h2>Pesan jadwal</h2>
     <p class="sub">Empat langkah singkat. Pesananmu dikirim ke WhatsApp barbershop untuk dikonfirmasi.</p>
@@ -179,6 +214,7 @@ body::before{
         <h3>Ringkasan pesanan</h3>
         <dl>
           <dt>Layanan</dt><dd id="sS">-</dd>
+          <dt>Model</dt><dd id="sM">-</dd>
           <dt>Barber</dt><dd id="sB">-</dd>
           <dt>Jadwal</dt><dd id="sD">-</dd>
           <dt>Nama</dt><dd id="sN">-</dd>
@@ -191,7 +227,7 @@ body::before{
   </div>
 </section>
 
-<section id="tim">
+<section id="tim" class="alt">
   <div class="wrap">
     <h2>Barber kami</h2>
     <p class="sub">Pilih barber yang paling cocok dengan gayamu.</p>
@@ -199,7 +235,7 @@ body::before{
   </div>
 </section>
 
-<section id="kontak" class="alt">
+<section id="kontak">
   <div class="wrap contact">
     <div>
       <h2>Jam buka</h2>
@@ -222,6 +258,7 @@ body::before{
 <script src="config.js"></script>
 <script>
 var C = CONFIG;
+var G = C.gaya || [];
 var $ = function(id){return document.getElementById(id)};
 var rp = function(n){return "Rp " + n.toLocaleString("id-ID")};
 function el(tag, text, cls){ var e=document.createElement(tag); if(text!==undefined) e.textContent=text; if(cls) e.className=cls; return e; }
@@ -247,9 +284,40 @@ lines($("alamat"), C.alamat);
 lines($("kontakInfo"), ["WhatsApp " + C.nomorTampil, "Instagram " + C.instagram]);
 $("foot").textContent = "\u00A9 " + new Date().getFullYear() + " " + C.nama + " Barbershop";
 
+/* ---- galeri model rambut ---- */
+var st = {svc:[], brb:"Siapa saja", date:0, time:null, model:null, kat:"Semua"};
+if (!G.length) { $("model").hidden = true; }
+
+function drawFilter(){
+  $("gf").innerHTML = "";
+  var cats = ["Semua"];
+  G.forEach(function(g){ if (cats.indexOf(g.kategori) < 0) cats.push(g.kategori); });
+  cats.forEach(function(c){
+    var b = el("button", c, "chip"+(st.kat===c?" on":"")); b.type="button";
+    b.onclick = function(){ st.kat=c; drawFilter(); drawGal(); };
+    $("gf").appendChild(b);
+  });
+}
+function drawGal(){
+  $("gal").innerHTML = "";
+  G.forEach(function(g,i){
+    if (st.kat !== "Semua" && g.kategori !== st.kat) return;
+    var b = el("button",undefined,"g"+(st.model===i?" on":"")); b.type="button";
+    b.setAttribute("aria-pressed", st.model===i ? "true" : "false");
+    var im = el("div",undefined,"im");
+    var img = new Image(); img.src = g.foto; img.alt = g.nama; img.loading = "lazy";
+    img.onerror = function(){ im.textContent = "Foto belum diunggah"; };
+    im.appendChild(img);
+    var tx = el("div",undefined,"tx"); tx.appendChild(el("b",g.nama)); tx.appendChild(el("small",g.kategori));
+    b.appendChild(im); b.appendChild(tx); b.appendChild(el("span","Dipilih","ck"));
+    b.onclick = function(){ st.model = (st.model===i ? null : i); drawGal(); upd(); };
+    $("gal").appendChild(b);
+  });
+}
+$("pickClear").onclick = function(){ st.model=null; drawGal(); upd(); };
+
 /* ---- fitur pemesanan ---- */
 var BARBERS = ["Siapa saja"].concat(C.barber.map(function(b){return b.nama}));
-var st = {svc:[], brb:"Siapa saja", date:0, time:null};
 var days = [], d0 = new Date();
 for (var i=0;i<7;i++) days.push(new Date(d0.getFullYear(), d0.getMonth(), d0.getDate()+i));
 function dayLabel(x){ return x.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long"}); }
@@ -298,11 +366,14 @@ function upd(){
   var name = $("nm").value.trim();
   var names = st.svc.map(function(i){return C.layanan[i].nama});
   $("sS").textContent = names.length ? names.join(", ") : "-";
+  $("sM").textContent = st.model!==null ? G[st.model].nama : "-";
   $("sB").textContent = st.brb;
   $("sD").textContent = st.time ? dayLabel(days[st.date]) + ", " + st.time : "-";
   $("sN").textContent = name || "-";
   $("sT").textContent = rp(total()); $("bT").textContent = rp(total());
   $("bC").textContent = names.length ? names.length + " layanan dipilih" : "Belum ada layanan";
+  $("pick").hidden = st.model===null;
+  if (st.model!==null) $("pickName").textContent = G[st.model].nama;
   var miss = !names.length ? "Pilih minimal satu layanan" : !st.time ? "Pilih jam kedatangan" : !name ? "Isi nama kamu" : "";
   $("go").disabled = !!miss;
   $("hint").textContent = miss || "Pesananmu akan dibuka di WhatsApp untuk dikirim.";
@@ -313,12 +384,13 @@ $("go").onclick = function(){
   var msg = "Halo " + C.nama + ", saya mau pesan jadwal.\n\n" +
     "Nama: " + $("nm").value.trim() + "\n" +
     "Layanan:\n" + names.join("\n") + "\n" +
+    (st.model!==null ? "Model rambut: " + G[st.model].nama + "\n" : "") +
     "Barber: " + st.brb + "\n" +
     "Jadwal: " + dayLabel(days[st.date]) + ", jam " + st.time + "\n" +
     "Total: " + rp(total()) + "\n\nMohon konfirmasinya, terima kasih.";
   window.open("https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
 };
-drawSvc(); drawBrb(); drawDates(); drawTimes(); upd();
+drawFilter(); drawGal(); drawSvc(); drawBrb(); drawDates(); drawTimes(); upd();
 </script>
 </body>
 </html>
