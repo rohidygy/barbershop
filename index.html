@@ -89,4 +89,236 @@ body::before{
   z-index:-1;
   pointer-events:none;
   background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220' fill='none' stroke='rgb(201,169,106)' stroke-opacity='0.12' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><g transform='rotate(-18 50 50)'><circle cx='38' cy='72' r='8'/><circle cx='62' cy='72' r='8'/><path d='M41 65L66 24M59 65L34 24'/></g><g transform='rotate(14 150 55)'><rect x='120' y='46' width='60' height='14' rx='3'/><path d='M126 60v14M134 60v14M142 60v14M150 60v14M158 60v14M166 60v14M174 60v14'/></g><g transform='rotate(12 50 165)'><rect x='40' y='140' width='20' height='52' rx='4'/><path d='M40 152l20-8M40 166l20-8M40 180l20-8M44 136h12M44 196h12'/></g><g transform='rotate(-16 150 170)'><rect x='118' y='164' width='46' height='10' rx='5'/><path d='M164 169l28-9v12z'/></g></svg>");
-  background-size:220px
+  background-size:220px 220px;
+  animation:geser 40s linear infinite;
+}
+@keyframes geser{
+  from{transform:translate(0,0)}
+  to{transform:translate(220px,220px)}
+}
+
+/* ===== TIANG BARBER BERGERAK ===== */
+.hero .wrap{position:relative}
+.pole{position:absolute;right:22px;top:0;width:150px}
+.pole svg{width:100%;height:auto;display:block}
+
+@media(max-width:820px){
+  .order{grid-template-columns:1fr}
+  .sum{position:static}
+  nav a:not(.pill){display:none}
+  .btn.ghost{margin:10px 0 0}
+  .pole{position:static;width:80px;margin-bottom:18px}
+  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--brass);padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));justify-content:space-between;align-items:center;gap:12px}
+  .bar b{font:600 1.4rem var(--serif);color:var(--brass2);display:block;line-height:1.1}
+  .bar small{color:var(--muted)}
+  .bar .btn{padding:12px 22px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  body::before{animation:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#" id="logo"></a>
+    <nav><a href="#tim">Barber</a><a href="#kontak">Lokasi</a><a class="pill" href="#pesan">Pesan sekarang</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div class="pole">
+      <svg id="pole" viewBox="0 0 160 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tiang barbershop berputar">
+        <defs>
+          <pattern id="st" width="10" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)">
+            <g><animateTransform attributeName="transform" type="translate" from="0 0" to="0 -48" dur="2.4s" repeatCount="indefinite"/>
+              <rect y="0" width="10" height="12" fill="#c8372d"/><rect y="12" width="10" height="12" fill="#f3ede2"/><rect y="24" width="10" height="12" fill="#2b4fa8"/><rect y="36" width="10" height="12" fill="#f3ede2"/>
+              <rect y="48" width="10" height="12" fill="#c8372d"/><rect y="60" width="10" height="12" fill="#f3ede2"/><rect y="72" width="10" height="12" fill="#2b4fa8"/><rect y="84" width="10" height="12" fill="#f3ede2"/>
+            </g>
+          </pattern>
+          <linearGradient id="sh" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".4"/><stop offset=".28" stop-color="#fff" stop-opacity=".3"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></linearGradient>
+          <clipPath id="cl"><rect x="42" y="78" width="76" height="174" rx="6"/></clipPath>
+        </defs>
+        <rect x="138" y="68" width="7" height="196" rx="2" fill="#bfc3c8"/>
+        <rect x="118" y="64" width="22" height="5" fill="#bfc3c8"/>
+        <rect x="118" y="262" width="22" height="5" fill="#bfc3c8"/>
+        <circle cx="80" cy="30" r="11" fill="#1b1b1b"/>
+        <rect x="75" y="38" width="10" height="24" fill="#1b1b1b"/>
+        <rect x="34" y="58" width="92" height="22" rx="11" fill="#1b1b1b"/>
+        <g clip-path="url(#cl)"><rect x="42" y="78" width="76" height="174" fill="url(#st)"/><rect x="42" y="78" width="76" height="174" fill="url(#sh)"/></g>
+        <rect x="34" y="250" width="92" height="22" rx="11" fill="#1b1b1b"/>
+        <rect x="75" y="270" width="10" height="14" fill="#1b1b1b"/>
+        <circle cx="80" cy="292" r="11" fill="#1b1b1b"/>
+      </svg>
+    </div>
+    <h1 id="judul"></h1>
+    <p id="deskripsi"></p>
+    <a class="btn" href="#pesan">Pesan jadwal</a>
+    <a class="btn ghost" href="#tim">Kenalan dengan barber</a>
+    <div class="facts" id="facts"></div>
+  </div>
+</section>
+
+<section id="pesan" class="alt">
+  <div class="wrap">
+    <h2>Pesan jadwal</h2>
+    <p class="sub">Empat langkah singkat. Pesananmu dikirim ke WhatsApp barbershop untuk dikonfirmasi.</p>
+    <div class="order">
+      <div>
+        <div class="step"><h3><i>1</i>Pilih layanan</h3><div class="opts" id="svc"></div></div>
+        <div class="step"><h3><i>2</i>Pilih barber</h3><div class="chips" id="brb"></div></div>
+        <div class="step"><h3><i>3</i>Pilih tanggal dan jam</h3>
+          <div class="chips dates" id="dts" style="margin-bottom:16px"></div>
+          <div class="chips" id="tms"></div></div>
+        <div class="step"><h3><i>4</i>Nama kamu</h3><input type="text" id="nm" placeholder="Contoh: Budi" autocomplete="name"></div>
+      </div>
+      <aside class="sum">
+        <h3>Ringkasan pesanan</h3>
+        <dl>
+          <dt>Layanan</dt><dd id="sS">-</dd>
+          <dt>Barber</dt><dd id="sB">-</dd>
+          <dt>Jadwal</dt><dd id="sD">-</dd>
+          <dt>Nama</dt><dd id="sN">-</dd>
+        </dl>
+        <div class="total"><span>Total</span><b id="sT">Rp 0</b></div>
+        <button class="btn" id="go" disabled>Kirim via WhatsApp</button>
+        <p class="hint" id="hint"></p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="tim">
+  <div class="wrap">
+    <h2>Barber kami</h2>
+    <p class="sub">Pilih barber yang paling cocok dengan gayamu.</p>
+    <div class="team" id="team"></div>
+  </div>
+</section>
+
+<section id="kontak" class="alt">
+  <div class="wrap contact">
+    <div>
+      <h2>Jam buka</h2>
+      <div class="hours" id="hours"></div>
+    </div>
+    <div>
+      <h2>Lokasi</h2>
+      <p id="alamat"></p>
+      <p id="kontakInfo" style="margin-top:12px;color:var(--muted)"></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap" id="foot"></div></footer>
+
+<div class="bar"><div><b id="bT">Rp 0</b><small id="bC">Belum ada layanan</small></div><a class="btn" href="#pesan">Lanjut pesan</a></div>
+
+<!-- Data diambil dari config.js. Pastikan file config.js ada di folder yang sama. -->
+<script src="config.js"></script>
+<script>
+var C = CONFIG;
+var $ = function(id){return document.getElementById(id)};
+var rp = function(n){return "Rp " + n.toLocaleString("id-ID")};
+function el(tag, text, cls){ var e=document.createElement(tag); if(text!==undefined) e.textContent=text; if(cls) e.className=cls; return e; }
+function lines(target, arr){ arr.forEach(function(t,i){ if(i) target.appendChild(document.createElement("br")); target.appendChild(document.createTextNode(t)); }); }
+
+/* ---- tiang barber: diam kalau pengunjung mengaktifkan "kurangi animasi" ---- */
+if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { $("pole").pauseAnimations(); }
+
+/* ---- isi halaman dari config ---- */
+document.title = C.nama + " Barbershop";
+(function(){
+  var w = C.nama.split(" "), last = w.pop();
+  var logo = $("logo");
+  if (w.length) logo.appendChild(document.createTextNode(w.join(" ") + " "));
+  logo.appendChild(el("span", last));
+})();
+$("judul").textContent = C.judul;
+$("deskripsi").textContent = C.deskripsi;
+C.keunggulan.forEach(function(k){ var d=el("div"); d.appendChild(el("b",k[0])); d.appendChild(document.createTextNode(k[1])); $("facts").appendChild(d); });
+C.barber.forEach(function(b){ var d=el("div",undefined,"person"); d.appendChild(el("div",b.nama.charAt(0),"av")); d.appendChild(el("h3",b.nama)); d.appendChild(el("p",b.info)); $("team").appendChild(d); });
+C.jamBuka.forEach(function(j){ var d=el("div"); d.appendChild(el("span",j[0])); d.appendChild(el("span",j[1])); $("hours").appendChild(d); });
+lines($("alamat"), C.alamat);
+lines($("kontakInfo"), ["WhatsApp " + C.nomorTampil, "Instagram " + C.instagram]);
+$("foot").textContent = "\u00A9 " + new Date().getFullYear() + " " + C.nama + " Barbershop";
+
+/* ---- fitur pemesanan ---- */
+var BARBERS = ["Siapa saja"].concat(C.barber.map(function(b){return b.nama}));
+var st = {svc:[], brb:"Siapa saja", date:0, time:null};
+var days = [], d0 = new Date();
+for (var i=0;i<7;i++) days.push(new Date(d0.getFullYear(), d0.getMonth(), d0.getDate()+i));
+function dayLabel(x){ return x.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long"}); }
+
+function drawSvc(){
+  $("svc").innerHTML = "";
+  C.layanan.forEach(function(s,i){
+    var b = el("button"); b.type="button"; b.className = "opt" + (st.svc.indexOf(i)>-1 ? " on":"");
+    var l = el("span", s.nama); l.appendChild(el("small", s.info));
+    b.appendChild(l); b.appendChild(el("span", rp(s.harga), "pr"));
+    b.onclick = function(){ var k=st.svc.indexOf(i); if(k>-1) st.svc.splice(k,1); else st.svc.push(i); drawSvc(); upd(); };
+    $("svc").appendChild(b);
+  });
+}
+function drawBrb(){
+  $("brb").innerHTML = "";
+  BARBERS.forEach(function(n){
+    var b = el("button", n, "chip"+(st.brb===n?" on":"")); b.type="button";
+    b.onclick = function(){ st.brb=n; drawBrb(); upd(); };
+    $("brb").appendChild(b);
+  });
+}
+function drawDates(){
+  $("dts").innerHTML = "";
+  days.forEach(function(x,i){
+    var b = el("button",undefined,"chip"+(st.date===i?" on":"")); b.type="button";
+    b.appendChild(el("small", i===0 ? "Hari ini" : x.toLocaleDateString("id-ID",{weekday:"short"})));
+    b.appendChild(el("b", x.getDate()));
+    b.appendChild(el("small", x.toLocaleDateString("id-ID",{month:"short"})));
+    b.onclick = function(){ st.date=i; st.time=null; drawDates(); drawTimes(); upd(); };
+    $("dts").appendChild(b);
+  });
+}
+function drawTimes(){
+  $("tms").innerHTML = "";
+  var now = new Date();
+  C.jamPesan.forEach(function(t){
+    var b = el("button", t, "chip"+(st.time===t?" on":"")); b.type="button";
+    if (st.date===0 && parseInt(t,10) <= now.getHours()) b.disabled = true;
+    b.onclick = function(){ st.time=t; drawTimes(); upd(); };
+    $("tms").appendChild(b);
+  });
+}
+function total(){ return st.svc.reduce(function(a,i){return a + C.layanan[i].harga},0); }
+function upd(){
+  var name = $("nm").value.trim();
+  var names = st.svc.map(function(i){return C.layanan[i].nama});
+  $("sS").textContent = names.length ? names.join(", ") : "-";
+  $("sB").textContent = st.brb;
+  $("sD").textContent = st.time ? dayLabel(days[st.date]) + ", " + st.time : "-";
+  $("sN").textContent = name || "-";
+  $("sT").textContent = rp(total()); $("bT").textContent = rp(total());
+  $("bC").textContent = names.length ? names.length + " layanan dipilih" : "Belum ada layanan";
+  var miss = !names.length ? "Pilih minimal satu layanan" : !st.time ? "Pilih jam kedatangan" : !name ? "Isi nama kamu" : "";
+  $("go").disabled = !!miss;
+  $("hint").textContent = miss || "Pesananmu akan dibuka di WhatsApp untuk dikirim.";
+}
+$("nm").addEventListener("input", upd);
+$("go").onclick = function(){
+  var names = st.svc.map(function(i){return "- " + C.layanan[i].nama});
+  var msg = "Halo " + C.nama + ", saya mau pesan jadwal.\n\n" +
+    "Nama: " + $("nm").value.trim() + "\n" +
+    "Layanan:\n" + names.join("\n") + "\n" +
+    "Barber: " + st.brb + "\n" +
+    "Jadwal: " + dayLabel(days[st.date]) + ", jam " + st.time + "\n" +
+    "Total: " + rp(total()) + "\n\nMohon konfirmasinya, terima kasih.";
+  window.open("https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+};
+drawSvc(); drawBrb(); drawDates(); drawTimes(); upd();
+</script>
+</body>
+</html>
