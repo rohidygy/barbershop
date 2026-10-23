@@ -6,10 +6,10 @@
 var CONFIG = {
 
   // ---------- IDENTITAS ----------
-  nama: "Pangkas Jaya",                 // nama barbershop
+  nama: "Kage BarberShop",              // nama barbershop
   whatsapp: "6281234567890",            // nomor WA: awali 62, tanpa 0 di depan
   nomorTampil: "0812-3456-7890",        // nomor yang tampil di website
-  instagram: "@pangkasjaya",
+  instagram: "@kagebarbershop",
   alamat: ["Jl. Contoh Raya No. 12", "Kota Anda, 12345"],
 
   // ---------- TEKS UTAMA ----------
@@ -50,39 +50,88 @@ var CONFIG = {
   // ---------- MODEL RAMBUT TERBARU (GALERI) ----------
   // nama     : nama model yang tampil
   // kategori : untuk tombol filter. Pakai nama yang sama untuk model sejenis
-  // tipe     : bentuk ilustrasi cadangan (dipakai kalau foto kosong).
-  //            Pilihan: fade, buzz, quiff, part, crop, long, curly, hawk, beard
-  //            Boleh digabung dengan +, contoh: fade+beard
-  // foto     : link foto (https://...) atau nama file di GitHub. Kosongkan "" kalau belum ada
+  // foto     : (BOLEH DIKOSONGKAN / DIHAPUS) kalau tidak ditulis, website otomatis
+  //            mencari foto bernama sesuai nama model, contoh:
+  //            "Mid Fade" -> foto/mid-fade.jpg
+  //            Kalau mau pakai link sendiri, tambahkan: foto: "https://..."
+  // Untuk melihat nama file yang diperlukan, buka websitemu dengan ?admin di belakang
+  // alamatnya, contoh: https://barbershopkage.my.id/?admin
   gaya: [
     // ----- FADE -----
-    { nama: "Low Fade", kategori: "Fade", tipe: "fade", foto: "https://i.ibb.co.com/ccrSB5t0/9f002a3e028805d8118f50167833d489.jpg" },
-    { nama: "Mid Fade", kategori: "Fade", tipe: "fade", foto: "" },
-    { nama: "High Fade", kategori: "Fade", tipe: "fade", foto: "" },
-    { nama: "Burst Fade", kategori: "Fade", tipe: "fade", foto: "" },
-    { nama: "Taper Fade", kategori: "Fade", tipe: "crop", foto: "" },
+    { nama: "Low Fade", kategori: "Fade" },
+    { nama: "Mid Fade", kategori: "Fade" },
+    { nama: "High Fade", kategori: "Fade" },
+    { nama: "Skin Fade", kategori: "Fade" },
+    { nama: "Burst Fade", kategori: "Fade" },
+    { nama: "Drop Fade", kategori: "Fade" },
+    { nama: "Taper Fade", kategori: "Fade" },
+    { nama: "Temple Fade", kategori: "Fade" },
+    { nama: "Shadow Fade", kategori: "Fade" },
 
     // ----- KLASIK -----
-    { nama: "Side Part", kategori: "Klasik", tipe: "part", foto: "" },
-    { nama: "Pompadour", kategori: "Klasik", tipe: "quiff", foto: "" },
-    { nama: "Slick Back", kategori: "Klasik", tipe: "quiff", foto: "" },
-    { nama: "Quiff Modern", kategori: "Klasik", tipe: "quiff", foto: "" },
+    { nama: "Side Part", kategori: "Klasik" },
+    { nama: "Pompadour", kategori: "Klasik" },
+    { nama: "Slick Back", kategori: "Klasik" },
+    { nama: "Quiff", kategori: "Klasik" },
+    { nama: "Ivy League", kategori: "Klasik" },
+    { nama: "Crew Cut", kategori: "Klasik" },
+    { nama: "Comb Over", kategori: "Klasik" },
+    { nama: "Regular Taper", kategori: "Klasik" },
 
     // ----- KEKINIAN -----
-    { nama: "Textured Crop", kategori: "Kekinian", tipe: "crop", foto: "" },
-    { nama: "French Crop", kategori: "Kekinian", tipe: "crop", foto: "" },
-    { nama: "Two Block", kategori: "Kekinian", tipe: "part", foto: "" },
-    { nama: "Comma Hair", kategori: "Kekinian", tipe: "part", foto: "" },
-    { nama: "Wolf Cut", kategori: "Kekinian", tipe: "long", foto: "" },
-    { nama: "Mullet Modern", kategori: "Kekinian", tipe: "long", foto: "" },
-    { nama: "Faux Hawk", kategori: "Kekinian", tipe: "hawk", foto: "" },
-    { nama: "Curly Taper", kategori: "Kekinian", tipe: "curly", foto: "" },
-    { nama: "Buzz Cut", kategori: "Kekinian", tipe: "buzz", foto: "" },
+    { nama: "Textured Crop", kategori: "Kekinian" },
+    { nama: "French Crop", kategori: "Kekinian" },
+    { nama: "Edgar Cut", kategori: "Kekinian" },
+    { nama: "Mullet Modern", kategori: "Kekinian" },
+    { nama: "Faux Hawk", kategori: "Kekinian" },
+    { nama: "Buzz Cut", kategori: "Kekinian" },
+    { nama: "Bowl Cut Modern", kategori: "Kekinian" },
+    { nama: "Spiky Texture", kategori: "Kekinian" },
+
+    // ----- GAYA KOREA -----
+    { nama: "Comma Hair", kategori: "Gaya Korea" },
+    { nama: "Two Block", kategori: "Gaya Korea" },
+    { nama: "Dandy Cut", kategori: "Gaya Korea" },
+    { nama: "Curtain Bangs", kategori: "Gaya Korea" },
+    { nama: "Fluffy Fringe", kategori: "Gaya Korea" },
+    { nama: "Soft Perm", kategori: "Gaya Korea" },
+    { nama: "Wavy Perm", kategori: "Gaya Korea" },
+
+    // ----- RAMBUT PANJANG -----
+    { nama: "Wolf Cut", kategori: "Rambut Panjang" },
+    { nama: "Shag Cut", kategori: "Rambut Panjang" },
+    { nama: "Layered Medium", kategori: "Rambut Panjang" },
+    { nama: "Long Slick Back", kategori: "Rambut Panjang" },
+    { nama: "Man Bun", kategori: "Rambut Panjang" },
+
+    // ----- KERITING -----
+    { nama: "Curly Taper", kategori: "Keriting" },
+    { nama: "Curly Fringe", kategori: "Keriting" },
+    { nama: "Broccoli Cut", kategori: "Keriting" },
+    { nama: "Afro Taper", kategori: "Keriting" },
+    { nama: "Perm Keriting", kategori: "Keriting" },
+
+    // ----- ANAK -----
+    { nama: "Potong Anak Rapi", kategori: "Anak" },
+    { nama: "Fade Anak", kategori: "Anak" },
+    { nama: "Crew Cut Anak", kategori: "Anak" },
+    { nama: "Bowl Cut Anak", kategori: "Anak" },
 
     // ----- JENGGOT -----
-    { nama: "Jenggot Rapi", kategori: "Jenggot", tipe: "buzz+beard", foto: "" },
-    { nama: "Fade + Jenggot", kategori: "Jenggot", tipe: "fade+beard", foto: "" },
-    { nama: "Botak + Jenggot", kategori: "Jenggot", tipe: "beard", foto: "" }
+    { nama: "Jenggot Rapi", kategori: "Jenggot" },
+    { nama: "Fade + Jenggot", kategori: "Jenggot" },
+    { nama: "Botak + Jenggot", kategori: "Jenggot" },
+    { nama: "Goatee", kategori: "Jenggot" },
+    { nama: "Stubble", kategori: "Jenggot" },
+    { nama: "Full Beard", kategori: "Jenggot" },
+    { nama: "Kumis Klasik", kategori: "Jenggot" },
+
+    // ----- WARNA -----
+    { nama: "Silver Ash Grey", kategori: "Warna" },
+    { nama: "Platinum Blonde", kategori: "Warna" },
+    { nama: "Highlight", kategori: "Warna" },
+    { nama: "Burgundy", kategori: "Warna" },
+    { nama: "Hitam Natural", kategori: "Warna" }
   ],
 
   // ---------- JAM YANG BISA DIPESAN ----------
