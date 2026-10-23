@@ -3,118 +3,269 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pangkas Jaya Barbershop</title>
-<meta name="description" content="Barbershop dengan potong rambut, cukur, dan perawatan jenggot. Booking lewat WhatsApp.">
+<title>Barbershop</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#14213d; --bg2:#1c2c52; --ink:#f5f1e8; --muted:#b5bccb;
-  --red:#c8372d; --gold:#e3b04b; --line:rgba(245,241,232,.18);
-  --display:'Bebas Neue',Impact,sans-serif; --body:'Work Sans',system-ui,sans-serif;
+  --bg:#10231c; --bg2:#173229; --card:#1d3b30; --ink:#f3ede2; --muted:#a9b8ad;
+  --brass:#c9a96a; --brass2:#e0c78f; --line:rgba(243,237,226,.16);
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;padding-bottom:84px}
 a{color:inherit}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
-.logo{font-family:var(--display);font-size:1.6rem;letter-spacing:.06em;text-decoration:none}
-nav a{margin-left:20px;text-decoration:none;color:var(--muted);font-size:.95rem}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;background:rgba(16,35,28,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+.logo{font-family:var(--serif);font-size:1.5rem;font-weight:700;letter-spacing:.04em;text-decoration:none}
+.logo span{color:var(--brass)}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem}
 nav a:hover{color:var(--ink)}
-.stripe{height:10px;background:repeating-linear-gradient(-45deg,var(--red) 0 14px,var(--ink) 14px 28px,#2f5bb7 28px 42px,var(--ink) 42px 56px)}
-.hero{padding:72px 0 64px}
-.hero h1{font-family:var(--display);font-size:clamp(3.4rem,11vw,7.5rem);line-height:.95;letter-spacing:.02em}
-.hero p{max-width:46ch;color:var(--muted);margin:20px 0 28px;font-size:1.1rem}
-.btn{display:inline-block;background:var(--red);color:#fff;padding:13px 26px;text-decoration:none;font-weight:600;border-radius:4px}
-.btn:hover{background:#a82a21}
-.btn.alt{background:transparent;border:1px solid var(--ink);margin-left:10px}
-.btn.alt:hover{background:var(--ink);color:var(--bg)}
-section{padding:60px 0}
-h2{font-family:var(--display);font-size:2.6rem;letter-spacing:.04em;margin-bottom:24px}
-.menu{list-style:none;padding:0;max-width:620px}
-.menu li{display:flex;align-items:baseline;gap:10px;padding:14px 0;border-bottom:1px dashed var(--line)}
-.menu .n{font-weight:600}
-.menu small{display:block;color:var(--muted);font-weight:400}
-.menu .dots{flex:1}
-.menu .p{color:var(--gold);font-weight:600;white-space:nowrap}
-.alt-bg{background:var(--bg2)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.barber{border-left:3px solid var(--gold);padding-left:16px}
-.barber h3{font-family:var(--display);font-size:1.7rem;letter-spacing:.04em}
-.barber p{color:var(--muted);font-size:.95rem}
-.hours{max-width:360px}
-.hours div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px}
-footer{padding:28px 0 calc(28px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
-:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-@media(max-width:560px){nav a{margin-left:12px;font-size:.85rem}.btn.alt{margin:10px 0 0}}
+nav .pill{border:1px solid var(--brass);color:var(--brass2);padding:7px 16px;border-radius:99px}
+.hero{padding:84px 0 72px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,9vw,6.4rem);line-height:1;max-width:11ch}
+.hero p{max-width:44ch;color:var(--muted);margin:22px 0 32px;font-size:1.1rem}
+.btn{display:inline-block;background:var(--brass);color:#10231c;padding:14px 30px;text-decoration:none;font-weight:600;border-radius:99px;border:0;font:600 1rem var(--sans);cursor:pointer}
+.btn:hover{background:var(--brass2)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);margin-left:10px}
+.btn.ghost:hover{border-color:var(--brass)}
+.facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+.facts b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--ink);font-weight:600}
+section{padding:68px 0}
+.alt{background:var(--bg2)}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5vw,3rem);line-height:1.1;margin-bottom:10px}
+.sub{color:var(--muted);margin-bottom:32px;max-width:52ch}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+.person{padding:22px;border:1px solid var(--line);border-radius:14px}
+.person .av{width:54px;height:54px;border-radius:50%;background:var(--brass);color:#10231c;display:grid;place-items:center;font:700 1.5rem var(--serif);margin-bottom:14px}
+.person h3{font-family:var(--serif);font-size:1.5rem}
+.person p{color:var(--muted);font-size:.95rem}
+.order{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.step h3{font-family:var(--serif);font-size:1.45rem;margin-bottom:14px;display:flex;gap:12px;align-items:center}
+.step h3 i{font:600 .95rem var(--sans);font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--brass);color:#10231c;display:grid;place-items:center}
+.opts{display:grid;gap:10px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer;width:100%}
+.opt:hover{border-color:var(--brass)}
+.opt.on{border-color:var(--brass);background:rgba(201,169,106,.14)}
+.opt small{display:block;color:var(--muted);font-size:.85rem}
+.opt .pr{color:var(--brass2);font-weight:600;white-space:nowrap}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{padding:10px 16px;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--ink);font:inherit;cursor:pointer;text-align:center}
+.chip small{display:block;font-size:.72rem;color:var(--muted);line-height:1.2}
+.chip:hover:not(:disabled){border-color:var(--brass)}
+.chip.on{background:var(--brass);color:#10231c;border-color:var(--brass)}
+.chip.on small{color:#10231c}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.dates .chip{min-width:62px;padding:8px 10px}
+.dates .chip b{font-size:1.2rem;display:block;line-height:1.2}
+input[type=text]{width:100%;padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+input::placeholder{color:#7d8f83}
+.sum{position:sticky;top:78px;background:var(--card);border:1px solid var(--brass);border-radius:16px;padding:22px}
+.sum h3{font-family:var(--serif);font-size:1.5rem;margin-bottom:12px}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:.95rem;margin-bottom:16px}
+.sum dt{color:var(--muted)}
+.sum dd{text-align:right}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--line);padding-top:14px;margin-bottom:16px}
+.total b{font:600 1.9rem var(--serif);color:var(--brass2)}
+.sum .btn{width:100%;text-align:center}
+.sum .btn:disabled{background:#3b5a4c;color:#8ea397;cursor:not-allowed}
+.hint{color:var(--muted);font-size:.85rem;margin-top:10px;text-align:center;min-height:1.3em}
+.bar{display:none}
+@media(max-width:820px){
+  .order{grid-template-columns:1fr}
+  .sum{position:static}
+  nav a:not(.pill){display:none}
+  .btn.ghost{margin:10px 0 0}
+  .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--brass);padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));justify-content:space-between;align-items:center;gap:12px}
+  .bar b{font:600 1.4rem var(--serif);color:var(--brass2);display:block;line-height:1.1}
+  .bar small{color:var(--muted)}
+  .bar .btn{padding:12px 22px}
+}
+.hours{max-width:380px}
+.hours div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px}
+footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
+:focus-visible{outline:3px solid var(--brass2);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
-    <a class="logo" href="#">PANGKAS JAYA</a>
-    <nav><a href="#harga">Harga</a><a href="#tim">Barber</a><a href="#kontak">Kontak</a></nav>
+    <a class="logo" href="#" id="logo"></a>
+    <nav><a href="#tim">Barber</a><a href="#kontak">Lokasi</a><a class="pill" href="#pesan">Pesan sekarang</a></nav>
   </div>
 </header>
-<div class="stripe"></div>
 
 <main>
 <section class="hero">
   <div class="wrap">
-    <h1>Rapi dari<br>kepala sampai<br>kerah.</h1>
-    <p>Potong rambut, cukur, dan rapikan jenggot oleh barber berpengalaman. Datang langsung atau booking dulu lewat WhatsApp supaya tidak antre.</p>
-    <a class="btn" href="https://wa.me/6281234567890?text=Halo%20Pangkas%20Jaya%2C%20saya%20mau%20booking" target="_blank" rel="noopener">Booking via WhatsApp</a>
-    <a class="btn alt" href="#harga">Lihat harga</a>
+    <h1 id="judul"></h1>
+    <p id="deskripsi"></p>
+    <a class="btn" href="#pesan">Pesan jadwal</a>
+    <a class="btn ghost" href="#tim">Kenalan dengan barber</a>
+    <div class="facts" id="facts"></div>
   </div>
 </section>
 
-<section id="harga" class="alt-bg">
+<section id="pesan" class="alt">
   <div class="wrap">
-    <h2>Daftar Harga</h2>
-    <ul class="menu">
-      <li><span class="n">Potong rambut<small>Konsultasi model, cuci, dan styling</small></span><span class="dots"></span><span class="p">Rp 40.000</span></li>
-      <li><span class="n">Cukur jenggot &amp; kumis<small>Handuk hangat dan pisau cukur</small></span><span class="dots"></span><span class="p">Rp 25.000</span></li>
-      <li><span class="n">Potong + cukur<small>Paket lengkap</small></span><span class="dots"></span><span class="p">Rp 60.000</span></li>
-      <li><span class="n">Hair coloring<small>Warna sesuai pilihan</small></span><span class="dots"></span><span class="p">Rp 150.000</span></li>
-      <li><span class="n">Potong anak (di bawah 12 tahun)</span><span class="dots"></span><span class="p">Rp 30.000</span></li>
-    </ul>
+    <h2>Pesan jadwal</h2>
+    <p class="sub">Empat langkah singkat. Pesananmu dikirim ke WhatsApp barbershop untuk dikonfirmasi.</p>
+    <div class="order">
+      <div>
+        <div class="step"><h3><i>1</i>Pilih layanan</h3><div class="opts" id="svc"></div></div>
+        <div class="step"><h3><i>2</i>Pilih barber</h3><div class="chips" id="brb"></div></div>
+        <div class="step"><h3><i>3</i>Pilih tanggal dan jam</h3>
+          <div class="chips dates" id="dts" style="margin-bottom:16px"></div>
+          <div class="chips" id="tms"></div></div>
+        <div class="step"><h3><i>4</i>Nama kamu</h3><input type="text" id="nm" placeholder="Contoh: Budi" autocomplete="name"></div>
+      </div>
+      <aside class="sum">
+        <h3>Ringkasan pesanan</h3>
+        <dl>
+          <dt>Layanan</dt><dd id="sS">-</dd>
+          <dt>Barber</dt><dd id="sB">-</dd>
+          <dt>Jadwal</dt><dd id="sD">-</dd>
+          <dt>Nama</dt><dd id="sN">-</dd>
+        </dl>
+        <div class="total"><span>Total</span><b id="sT">Rp 0</b></div>
+        <button class="btn" id="go" disabled>Kirim via WhatsApp</button>
+        <p class="hint" id="hint"></p>
+      </aside>
+    </div>
   </div>
 </section>
 
 <section id="tim">
   <div class="wrap">
-    <h2>Barber Kami</h2>
-    <div class="grid">
-      <div class="barber"><h3>Rudi</h3><p>10 tahun pengalaman. Ahli fade dan potongan klasik.</p></div>
-      <div class="barber"><h3>Dimas</h3><p>Spesialis model kekinian, undercut, dan texture crop.</p></div>
-      <div class="barber"><h3>Bayu</h3><p>Cukur tradisional dan perawatan jenggot.</p></div>
-    </div>
+    <h2>Barber kami</h2>
+    <p class="sub">Pilih barber yang paling cocok dengan gayamu.</p>
+    <div class="team" id="team"></div>
   </div>
 </section>
 
-<section id="kontak" class="alt-bg">
-  <div class="wrap contact-grid">
+<section id="kontak" class="alt">
+  <div class="wrap contact">
     <div>
-      <h2>Jam Buka</h2>
-      <div class="hours">
-        <div><span>Senin – Jumat</span><span>10.00 – 21.00</span></div>
-        <div><span>Sabtu</span><span>09.00 – 22.00</span></div>
-        <div><span>Minggu</span><span>11.00 – 20.00</span></div>
-      </div>
+      <h2>Jam buka</h2>
+      <div class="hours" id="hours"></div>
     </div>
     <div>
       <h2>Lokasi</h2>
-      <p>Jl. Contoh Raya No. 12<br>Kota Anda, 12345</p>
-      <p style="margin-top:12px">WhatsApp: 0812-3456-7890<br>Instagram: @pangkasjaya</p>
-      <p style="margin-top:18px"><a class="btn" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Chat sekarang</a></p>
+      <p id="alamat"></p>
+      <p id="kontakInfo" style="margin-top:12px;color:var(--muted)"></p>
     </div>
   </div>
 </section>
 </main>
 
-<footer><div class="wrap">&copy; 2026 Pangkas Jaya Barbershop</div></footer>
+<footer><div class="wrap" id="foot"></div></footer>
+
+<div class="bar"><div><b id="bT">Rp 0</b><small id="bC">Belum ada layanan</small></div><a class="btn" href="#pesan">Lanjut pesan</a></div>
+
+<!-- Data diambil dari config.js. Pastikan file config.js ada di folder yang sama. -->
+<script src="config.js"></script>
+<script>
+var C = CONFIG;
+var $ = function(id){return document.getElementById(id)};
+var rp = function(n){return "Rp " + n.toLocaleString("id-ID")};
+function el(tag, text, cls){ var e=document.createElement(tag); if(text!==undefined) e.textContent=text; if(cls) e.className=cls; return e; }
+function lines(target, arr){ arr.forEach(function(t,i){ if(i) target.appendChild(document.createElement("br")); target.appendChild(document.createTextNode(t)); }); }
+
+/* ---- isi halaman dari config ---- */
+document.title = C.nama + " Barbershop";
+(function(){
+  var w = C.nama.split(" "), last = w.pop();
+  var logo = $("logo");
+  if (w.length) logo.appendChild(document.createTextNode(w.join(" ") + " "));
+  logo.appendChild(el("span", last));
+})();
+$("judul").textContent = C.judul;
+$("deskripsi").textContent = C.deskripsi;
+C.keunggulan.forEach(function(k){ var d=el("div"); d.appendChild(el("b",k[0])); d.appendChild(document.createTextNode(k[1])); $("facts").appendChild(d); });
+C.barber.forEach(function(b){ var d=el("div",undefined,"person"); d.appendChild(el("div",b.nama.charAt(0),"av")); d.appendChild(el("h3",b.nama)); d.appendChild(el("p",b.info)); $("team").appendChild(d); });
+C.jamBuka.forEach(function(j){ var d=el("div"); d.appendChild(el("span",j[0])); d.appendChild(el("span",j[1])); $("hours").appendChild(d); });
+lines($("alamat"), C.alamat);
+lines($("kontakInfo"), ["WhatsApp " + C.nomorTampil, "Instagram " + C.instagram]);
+$("foot").textContent = "\u00A9 " + new Date().getFullYear() + " " + C.nama + " Barbershop";
+
+/* ---- fitur pemesanan ---- */
+var BARBERS = ["Siapa saja"].concat(C.barber.map(function(b){return b.nama}));
+var st = {svc:[], brb:"Siapa saja", date:0, time:null};
+var days = [], d0 = new Date();
+for (var i=0;i<7;i++) days.push(new Date(d0.getFullYear(), d0.getMonth(), d0.getDate()+i));
+function dayLabel(x){ return x.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long"}); }
+
+function drawSvc(){
+  $("svc").innerHTML = "";
+  C.layanan.forEach(function(s,i){
+    var b = el("button"); b.type="button"; b.className = "opt" + (st.svc.indexOf(i)>-1 ? " on":"");
+    var l = el("span", s.nama); l.appendChild(el("small", s.info));
+    b.appendChild(l); b.appendChild(el("span", rp(s.harga), "pr"));
+    b.onclick = function(){ var k=st.svc.indexOf(i); if(k>-1) st.svc.splice(k,1); else st.svc.push(i); drawSvc(); upd(); };
+    $("svc").appendChild(b);
+  });
+}
+function drawBrb(){
+  $("brb").innerHTML = "";
+  BARBERS.forEach(function(n){
+    var b = el("button", n, "chip"+(st.brb===n?" on":"")); b.type="button";
+    b.onclick = function(){ st.brb=n; drawBrb(); upd(); };
+    $("brb").appendChild(b);
+  });
+}
+function drawDates(){
+  $("dts").innerHTML = "";
+  days.forEach(function(x,i){
+    var b = el("button",undefined,"chip"+(st.date===i?" on":"")); b.type="button";
+    b.appendChild(el("small", i===0 ? "Hari ini" : x.toLocaleDateString("id-ID",{weekday:"short"})));
+    b.appendChild(el("b", x.getDate()));
+    b.appendChild(el("small", x.toLocaleDateString("id-ID",{month:"short"})));
+    b.onclick = function(){ st.date=i; st.time=null; drawDates(); drawTimes(); upd(); };
+    $("dts").appendChild(b);
+  });
+}
+function drawTimes(){
+  $("tms").innerHTML = "";
+  var now = new Date();
+  C.jamPesan.forEach(function(t){
+    var b = el("button", t, "chip"+(st.time===t?" on":"")); b.type="button";
+    if (st.date===0 && parseInt(t,10) <= now.getHours()) b.disabled = true;
+    b.onclick = function(){ st.time=t; drawTimes(); upd(); };
+    $("tms").appendChild(b);
+  });
+}
+function total(){ return st.svc.reduce(function(a,i){return a + C.layanan[i].harga},0); }
+function upd(){
+  var name = $("nm").value.trim();
+  var names = st.svc.map(function(i){return C.layanan[i].nama});
+  $("sS").textContent = names.length ? names.join(", ") : "-";
+  $("sB").textContent = st.brb;
+  $("sD").textContent = st.time ? dayLabel(days[st.date]) + ", " + st.time : "-";
+  $("sN").textContent = name || "-";
+  $("sT").textContent = rp(total()); $("bT").textContent = rp(total());
+  $("bC").textContent = names.length ? names.length + " layanan dipilih" : "Belum ada layanan";
+  var miss = !names.length ? "Pilih minimal satu layanan" : !st.time ? "Pilih jam kedatangan" : !name ? "Isi nama kamu" : "";
+  $("go").disabled = !!miss;
+  $("hint").textContent = miss || "Pesananmu akan dibuka di WhatsApp untuk dikirim.";
+}
+$("nm").addEventListener("input", upd);
+$("go").onclick = function(){
+  var names = st.svc.map(function(i){return "- " + C.layanan[i].nama});
+  var msg = "Halo " + C.nama + ", saya mau pesan jadwal.\n\n" +
+    "Nama: " + $("nm").value.trim() + "\n" +
+    "Layanan:\n" + names.join("\n") + "\n" +
+    "Barber: " + st.brb + "\n" +
+    "Jadwal: " + dayLabel(days[st.date]) + ", jam " + st.time + "\n" +
+    "Total: " + rp(total()) + "\n\nMohon konfirmasinya, terima kasih.";
+  window.open("https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
+};
+drawSvc(); drawBrb(); drawDates(); drawTimes(); upd();
+</script>
 </body>
 </html>
