@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pangkas Jaya Barbershop</title>
-<meta name="description" content="Barbershop dengan potong rambut, cukur, dan perawatan jenggot. Pesan jadwal online dalam 1 menit.">
+<title>Barbershop</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -44,8 +43,6 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5vw,3rem);lin
 .person .av{width:54px;height:54px;border-radius:50%;background:var(--brass);color:#10231c;display:grid;place-items:center;font:700 1.5rem var(--serif);margin-bottom:14px}
 .person h3{font-family:var(--serif);font-size:1.5rem}
 .person p{color:var(--muted);font-size:.95rem}
-
-/* ORDER */
 .order{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:start}
 .step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
 .step h3{font-family:var(--serif);font-size:1.45rem;margin-bottom:14px;display:flex;gap:12px;align-items:center}
@@ -99,7 +96,7 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <body>
 <header>
   <div class="wrap">
-    <a class="logo" href="#">Pangkas <span>Jaya</span></a>
+    <a class="logo" href="#" id="logo"></a>
     <nav><a href="#tim">Barber</a><a href="#kontak">Lokasi</a><a class="pill" href="#pesan">Pesan sekarang</a></nav>
   </div>
 </header>
@@ -107,15 +104,11 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <main>
 <section class="hero">
   <div class="wrap">
-    <h1>Rapi tanpa antre.</h1>
-    <p>Pilih layanan, barber, dan jam. Selesai dalam satu menit, konfirmasi langsung lewat WhatsApp.</p>
+    <h1 id="judul"></h1>
+    <p id="deskripsi"></p>
     <a class="btn" href="#pesan">Pesan jadwal</a>
     <a class="btn ghost" href="#tim">Kenalan dengan barber</a>
-    <div class="facts">
-      <div><b>10+ tahun</b>pengalaman</div>
-      <div><b>3 barber</b>berpengalaman</div>
-      <div><b>Handuk hangat</b>di setiap cukur</div>
-    </div>
+    <div class="facts" id="facts"></div>
   </div>
 </section>
 
@@ -151,12 +144,8 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 <section id="tim">
   <div class="wrap">
     <h2>Barber kami</h2>
-    <p class="sub">Tiga barber dengan keahlian berbeda. Pilih yang paling cocok dengan gayamu.</p>
-    <div class="team">
-      <div class="person"><div class="av">R</div><h3>Rudi</h3><p>Fade dan potongan klasik. 10 tahun di kursi cukur.</p></div>
-      <div class="person"><div class="av">D</div><h3>Dimas</h3><p>Undercut, texture crop, dan model kekinian.</p></div>
-      <div class="person"><div class="av">B</div><h3>Bayu</h3><p>Cukur tradisional dan perawatan jenggot.</p></div>
-    </div>
+    <p class="sub">Pilih barber yang paling cocok dengan gayamu.</p>
+    <div class="team" id="team"></div>
   </div>
 </section>
 
@@ -164,100 +153,97 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
   <div class="wrap contact">
     <div>
       <h2>Jam buka</h2>
-      <div class="hours">
-        <div><span>Senin – Jumat</span><span>10.00 – 21.00</span></div>
-        <div><span>Sabtu</span><span>09.00 – 22.00</span></div>
-        <div><span>Minggu</span><span>11.00 – 20.00</span></div>
-      </div>
+      <div class="hours" id="hours"></div>
     </div>
     <div>
       <h2>Lokasi</h2>
-      <p>Jl. Contoh Raya No. 12<br>Kota Anda, 12345</p>
-      <p style="margin-top:12px;color:var(--muted)">WhatsApp 0812-3456-7890<br>Instagram @pangkasjaya</p>
+      <p id="alamat"></p>
+      <p id="kontakInfo" style="margin-top:12px;color:var(--muted)"></p>
     </div>
   </div>
 </section>
 </main>
 
-<footer><div class="wrap">&copy; 2026 Pangkas Jaya Barbershop</div></footer>
+<footer><div class="wrap" id="foot"></div></footer>
 
-<div class="bar"><div><b id="bT">Rp 0</b><small id="bC">Belum ada layanan</small></div><a class="btn" href="#pesan" id="bBtn">Lanjut pesan</a></div>
+<div class="bar"><div><b id="bT">Rp 0</b><small id="bC">Belum ada layanan</small></div><a class="btn" href="#pesan">Lanjut pesan</a></div>
 
+<!-- Data diambil dari config.js. Pastikan file config.js ada di folder yang sama. -->
+<script src="config.js"></script>
 <script>
-/* ====== UBAH DATA DI SINI ====== */
-var WA = "6281234567890";            // nomor WhatsApp, tanpa 0 di depan, awali 62
-var SERVICES = [
-  {n:"Potong rambut", d:"Konsultasi model, cuci, styling", p:40000},
-  {n:"Cukur jenggot dan kumis", d:"Handuk hangat dan pisau cukur", p:25000},
-  {n:"Paket potong + cukur", d:"Layanan lengkap, lebih hemat", p:60000},
-  {n:"Hair coloring", d:"Warna sesuai pilihan", p:150000},
-  {n:"Potong anak (di bawah 12 tahun)", d:"Sabar dan cepat", p:30000}
-];
-var BARBERS = ["Siapa saja","Rudi","Dimas","Bayu"];
-var TIMES = ["10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00"];
-/* =============================== */
-
-var st = {svc:[], brb:"Siapa saja", date:null, time:null};
+var C = CONFIG;
 var $ = function(id){return document.getElementById(id)};
 var rp = function(n){return "Rp " + n.toLocaleString("id-ID")};
-var days = [];
-(function(){
-  var d = new Date();
-  for (var i=0;i<7;i++){ var x = new Date(d.getFullYear(), d.getMonth(), d.getDate()+i); days.push(x); }
-  st.date = 0;
-})();
+function el(tag, text, cls){ var e=document.createElement(tag); if(text!==undefined) e.textContent=text; if(cls) e.className=cls; return e; }
+function lines(target, arr){ arr.forEach(function(t,i){ if(i) target.appendChild(document.createElement("br")); target.appendChild(document.createTextNode(t)); }); }
 
+/* ---- isi halaman dari config ---- */
+document.title = C.nama + " Barbershop";
+(function(){
+  var w = C.nama.split(" "), last = w.pop();
+  var logo = $("logo");
+  if (w.length) logo.appendChild(document.createTextNode(w.join(" ") + " "));
+  logo.appendChild(el("span", last));
+})();
+$("judul").textContent = C.judul;
+$("deskripsi").textContent = C.deskripsi;
+C.keunggulan.forEach(function(k){ var d=el("div"); d.appendChild(el("b",k[0])); d.appendChild(document.createTextNode(k[1])); $("facts").appendChild(d); });
+C.barber.forEach(function(b){ var d=el("div",undefined,"person"); d.appendChild(el("div",b.nama.charAt(0),"av")); d.appendChild(el("h3",b.nama)); d.appendChild(el("p",b.info)); $("team").appendChild(d); });
+C.jamBuka.forEach(function(j){ var d=el("div"); d.appendChild(el("span",j[0])); d.appendChild(el("span",j[1])); $("hours").appendChild(d); });
+lines($("alamat"), C.alamat);
+lines($("kontakInfo"), ["WhatsApp " + C.nomorTampil, "Instagram " + C.instagram]);
+$("foot").textContent = "\u00A9 " + new Date().getFullYear() + " " + C.nama + " Barbershop";
+
+/* ---- fitur pemesanan ---- */
+var BARBERS = ["Siapa saja"].concat(C.barber.map(function(b){return b.nama}));
+var st = {svc:[], brb:"Siapa saja", date:0, time:null};
+var days = [], d0 = new Date();
+for (var i=0;i<7;i++) days.push(new Date(d0.getFullYear(), d0.getMonth(), d0.getDate()+i));
 function dayLabel(x){ return x.toLocaleDateString("id-ID",{weekday:"long",day:"numeric",month:"long"}); }
 
 function drawSvc(){
   $("svc").innerHTML = "";
-  SERVICES.forEach(function(s,i){
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "opt" + (st.svc.indexOf(i)>-1 ? " on":"");
-    b.innerHTML = "<span>"+s.n+"<small>"+s.d+"</small></span><span class='pr'>"+rp(s.p)+"</span>";
-    b.onclick = function(){
-      var k = st.svc.indexOf(i);
-      if (k>-1) st.svc.splice(k,1); else st.svc.push(i);
-      drawSvc(); upd();
-    };
+  C.layanan.forEach(function(s,i){
+    var b = el("button"); b.type="button"; b.className = "opt" + (st.svc.indexOf(i)>-1 ? " on":"");
+    var l = el("span", s.nama); l.appendChild(el("small", s.info));
+    b.appendChild(l); b.appendChild(el("span", rp(s.harga), "pr"));
+    b.onclick = function(){ var k=st.svc.indexOf(i); if(k>-1) st.svc.splice(k,1); else st.svc.push(i); drawSvc(); upd(); };
     $("svc").appendChild(b);
   });
 }
 function drawBrb(){
   $("brb").innerHTML = "";
   BARBERS.forEach(function(n){
-    var b = document.createElement("button");
-    b.type="button"; b.className="chip"+(st.brb===n?" on":""); b.textContent=n;
-    b.onclick=function(){st.brb=n;drawBrb();upd();};
+    var b = el("button", n, "chip"+(st.brb===n?" on":"")); b.type="button";
+    b.onclick = function(){ st.brb=n; drawBrb(); upd(); };
     $("brb").appendChild(b);
   });
 }
 function drawDates(){
   $("dts").innerHTML = "";
   days.forEach(function(x,i){
-    var b = document.createElement("button");
-    b.type="button"; b.className="chip"+(st.date===i?" on":"");
-    var t = i===0 ? "Hari ini" : x.toLocaleDateString("id-ID",{weekday:"short"});
-    b.innerHTML = "<small>"+t+"</small><b>"+x.getDate()+"</b><small>"+x.toLocaleDateString("id-ID",{month:"short"})+"</small>";
-    b.onclick=function(){st.date=i;st.time=null;drawDates();drawTimes();upd();};
+    var b = el("button",undefined,"chip"+(st.date===i?" on":"")); b.type="button";
+    b.appendChild(el("small", i===0 ? "Hari ini" : x.toLocaleDateString("id-ID",{weekday:"short"})));
+    b.appendChild(el("b", x.getDate()));
+    b.appendChild(el("small", x.toLocaleDateString("id-ID",{month:"short"})));
+    b.onclick = function(){ st.date=i; st.time=null; drawDates(); drawTimes(); upd(); };
     $("dts").appendChild(b);
   });
 }
 function drawTimes(){
   $("tms").innerHTML = "";
   var now = new Date();
-  TIMES.forEach(function(t){
-    var b = document.createElement("button");
-    b.type="button"; b.className="chip"+(st.time===t?" on":""); b.textContent=t;
+  C.jamPesan.forEach(function(t){
+    var b = el("button", t, "chip"+(st.time===t?" on":"")); b.type="button";
     if (st.date===0 && parseInt(t,10) <= now.getHours()) b.disabled = true;
-    b.onclick=function(){st.time=t;drawTimes();upd();};
+    b.onclick = function(){ st.time=t; drawTimes(); upd(); };
     $("tms").appendChild(b);
   });
 }
-function total(){ return st.svc.reduce(function(a,i){return a+SERVICES[i].p},0); }
+function total(){ return st.svc.reduce(function(a,i){return a + C.layanan[i].harga},0); }
 function upd(){
   var name = $("nm").value.trim();
-  var names = st.svc.map(function(i){return SERVICES[i].n});
+  var names = st.svc.map(function(i){return C.layanan[i].nama});
   $("sS").textContent = names.length ? names.join(", ") : "-";
   $("sB").textContent = st.brb;
   $("sD").textContent = st.time ? dayLabel(days[st.date]) + ", " + st.time : "-";
@@ -270,14 +256,14 @@ function upd(){
 }
 $("nm").addEventListener("input", upd);
 $("go").onclick = function(){
-  var names = st.svc.map(function(i){return "- " + SERVICES[i].n});
-  var msg = "Halo Pangkas Jaya, saya mau pesan jadwal.\n\n" +
+  var names = st.svc.map(function(i){return "- " + C.layanan[i].nama});
+  var msg = "Halo " + C.nama + ", saya mau pesan jadwal.\n\n" +
     "Nama: " + $("nm").value.trim() + "\n" +
     "Layanan:\n" + names.join("\n") + "\n" +
     "Barber: " + st.brb + "\n" +
     "Jadwal: " + dayLabel(days[st.date]) + ", jam " + st.time + "\n" +
     "Total: " + rp(total()) + "\n\nMohon konfirmasinya, terima kasih.";
-  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+  window.open("https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
 };
 drawSvc(); drawBrb(); drawDates(); drawTimes(); upd();
 </script>
