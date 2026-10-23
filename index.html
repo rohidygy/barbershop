@@ -36,7 +36,7 @@ nav .pill{border:1px solid var(--brass);color:var(--brass2);padding:7px 16px;bor
 .btn.sm{padding:10px 22px;font-size:.95rem}
 .facts{display:flex;flex-wrap:wrap;gap:34px;margin-top:48px;padding-top:26px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
 .facts b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--ink);font-weight:600}
-section{padding:68px 0}
+section{padding:68px 0;scroll-margin-top:62px}
 .alt{background:rgba(23,50,41,.80)}
 h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5vw,3rem);line-height:1.1;margin-bottom:10px}
 .sub{color:var(--muted);margin-bottom:32px;max-width:52ch}
@@ -51,13 +51,14 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5vw,3rem);lin
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
 .g{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);padding:0;color:var(--ink);font:inherit;text-align:left;cursor:pointer;display:block;width:100%}
 .g:hover{border-color:var(--brass)}
-.g .im{aspect-ratio:4/5;background:var(--bg2);display:grid;place-items:center;color:var(--muted);font-size:.85rem;text-align:center;padding:10px;overflow:hidden}
-.g .im img{width:100%;height:100%;object-fit:cover;display:block;margin:-10px;padding:0}
+.g .im{position:relative;aspect-ratio:4/5;background:var(--bg2);display:grid;place-items:center;color:var(--muted);font-size:.85rem;text-align:center}
+.g .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.g .im .ph{padding:10px}
 .g .tx{padding:12px 14px}
 .g .tx b{font-family:var(--serif);font-size:1.25rem;display:block;font-weight:600;line-height:1.2}
 .g .tx small{color:var(--muted)}
 .g.on{border-color:var(--brass);box-shadow:0 0 0 2px var(--brass)}
-.g .ck{position:absolute;top:10px;right:10px;background:var(--brass);color:#10231c;border-radius:99px;padding:3px 12px;font-size:.8rem;font-weight:600;display:none}
+.g .ck{position:absolute;top:10px;right:10px;z-index:2;background:var(--brass);color:#10231c;border-radius:99px;padding:3px 12px;font-size:.8rem;font-weight:600;display:none}
 .g.on .ck{display:block}
 .pick{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px;padding:14px 18px;border:1px solid var(--brass);border-radius:14px;background:var(--card)}
 .pick span{color:var(--muted)}
@@ -257,8 +258,19 @@ body::before{
 <!-- Data diambil dari config.js. Pastikan file config.js ada di folder yang sama. -->
 <script src="config.js"></script>
 <script>
-var C = CONFIG;
-var G = C.gaya || [];
+var C = (typeof CONFIG !== "undefined") ? CONFIG : {};
+
+/* Model rambut cadangan: dipakai kalau config.js belum punya blok "gaya" */
+var G = (C.gaya && C.gaya.length) ? C.gaya : [
+  { nama: "Low Fade", kategori: "Fade", foto: "low-fade.jpg" },
+  { nama: "Mid Fade + Quiff", kategori: "Fade", foto: "mid-fade.jpg" },
+  { nama: "Side Part Klasik", kategori: "Klasik", foto: "side-part.jpg" },
+  { nama: "Pompadour", kategori: "Klasik", foto: "pompadour.jpg" },
+  { nama: "Textured Crop", kategori: "Kekinian", foto: "textured-crop.jpg" },
+  { nama: "Two Block", kategori: "Kekinian", foto: "two-block.jpg" },
+  { nama: "Jenggot Rapi", kategori: "Jenggot", foto: "jenggot-rapi.jpg" }
+];
+
 var $ = function(id){return document.getElementById(id)};
 var rp = function(n){return "Rp " + n.toLocaleString("id-ID")};
 function el(tag, text, cls){ var e=document.createElement(tag); if(text!==undefined) e.textContent=text; if(cls) e.className=cls; return e; }
@@ -286,7 +298,6 @@ $("foot").textContent = "\u00A9 " + new Date().getFullYear() + " " + C.nama + " 
 
 /* ---- galeri model rambut ---- */
 var st = {svc:[], brb:"Siapa saja", date:0, time:null, model:null, kat:"Semua"};
-if (!G.length) { $("model").hidden = true; }
 
 function drawFilter(){
   $("gf").innerHTML = "";
@@ -305,8 +316,9 @@ function drawGal(){
     var b = el("button",undefined,"g"+(st.model===i?" on":"")); b.type="button";
     b.setAttribute("aria-pressed", st.model===i ? "true" : "false");
     var im = el("div",undefined,"im");
-    var img = new Image(); img.src = g.foto; img.alt = g.nama; img.loading = "lazy";
-    img.onerror = function(){ im.textContent = "Foto belum diunggah"; };
+    var img = new Image(); img.alt = g.nama; img.loading = "lazy";
+    img.onerror = function(){ img.remove(); im.appendChild(el("span","Foto belum diunggah","ph")); };
+    img.src = g.foto;
     im.appendChild(img);
     var tx = el("div",undefined,"tx"); tx.appendChild(el("b",g.nama)); tx.appendChild(el("small",g.kategori));
     b.appendChild(im); b.appendChild(tx); b.appendChild(el("span","Dipilih","ck"));
