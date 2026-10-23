@@ -6,7 +6,7 @@
 var CONFIG = {
 
   // ---------- IDENTITAS ----------
-  nama: "Pangkas Jaya",                 // nama barbershop
+  nama: "barber Kage",                 // nama barbershop
   whatsapp: "6281234567890",            // nomor WA: awali 62, tanpa 0 di depan
   nomorTampil: "0812-3456-7890",        // nomor yang tampil di website
   instagram: "@pangkasjaya",
