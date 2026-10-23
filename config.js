@@ -47,6 +47,20 @@ var CONFIG = {
     { nama: "Bayu", info: "Cukur tradisional dan perawatan jenggot." }
   ],
 
+  // ---------- MODEL RAMBUT TERBARU (GALERI FOTO) ----------
+  // nama     : nama model yang tampil
+  // kategori : untuk tombol filter. Pakai nama yang sama untuk model sejenis
+  // foto     : nama file foto yang kamu upload ke GitHub (huruf kecil, tanpa spasi)
+  gaya: [
+    { nama: "Low Fade", kategori: "Fade", foto: "low-fade.jpg" },
+    { nama: "Mid Fade + Quiff", kategori: "Fade", foto: "mid-fade.jpg" },
+    { nama: "Side Part Klasik", kategori: "Klasik", foto: "side-part.jpg" },
+    { nama: "Pompadour", kategori: "Klasik", foto: "pompadour.jpg" },
+    { nama: "Textured Crop", kategori: "Kekinian", foto: "textured-crop.jpg" },
+    { nama: "Two Block", kategori: "Kekinian", foto: "two-block.jpg" },
+    { nama: "Jenggot Rapi", kategori: "Jenggot", foto: "jenggot-rapi.jpg" }
+  ],
+
   // ---------- JAM YANG BISA DIPESAN ----------
   jamPesan: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"]
 };
