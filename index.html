@@ -47,14 +47,18 @@ h2{font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,5vw,3rem);lin
 .person p{color:var(--muted);font-size:.95rem}
 
 /* ===== GALERI MODEL RAMBUT ===== */
-.gfilter{margin-bottom:22px}
+.gtools{margin-bottom:16px}
+.gtools input{max-width:300px}
+.gfilter{margin-bottom:18px}
+.cnt{color:var(--muted);font-size:.9rem;margin:0 0 14px}
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px}
 .g{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);padding:0;color:var(--ink);font:inherit;text-align:left;cursor:pointer;display:block;width:100%}
 .g:hover{border-color:var(--brass)}
 .g .im{position:relative;aspect-ratio:4/5;background:var(--bg2);overflow:hidden}
-.g .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.g .im svg{position:absolute;inset:0;width:100%;height:100%}
-.g .im .lb{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:.72rem;color:var(--muted);z-index:1}
+.g .im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.82rem;text-align:center;padding:12px;background:repeating-linear-gradient(135deg,rgba(201,169,106,.06) 0 10px,transparent 10px 20px)}
+.ph svg{width:52px;height:52px}
+.ph small{font-size:.7rem;opacity:.85;word-break:break-all}
 .g .tx{padding:12px 14px}
 .g .tx b{font-family:var(--serif);font-size:1.25rem;display:block;font-weight:600;line-height:1.2}
 .g .tx small{color:var(--muted)}
@@ -132,6 +136,9 @@ body::before{
   .btn.ghost{margin:10px 0 0}
   .pole{position:static;width:80px;margin-bottom:18px}
   .gal{grid-template-columns:repeat(2,1fr);gap:12px}
+  .gtools input{max-width:none}
+  .gfilter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}
+  .gfilter .chip{white-space:nowrap;flex:none}
   .bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--bg);border-top:1px solid var(--brass);padding:12px 18px calc(12px + env(safe-area-inset-bottom,0px));justify-content:space-between;align-items:center;gap:12px}
   .bar b{font:600 1.4rem var(--serif);color:var(--brass2);display:block;line-height:1.1}
   .bar small{color:var(--muted)}
@@ -189,9 +196,12 @@ body::before{
 <section id="model" class="alt">
   <div class="wrap">
     <h2>Model rambut terbaru</h2>
-    <p class="sub">Pilih kategori, lalu ketuk foto model yang kamu suka. Pilihanmu ikut terkirim saat memesan.</p>
+    <p class="sub">Cari atau pilih kategori, lalu ketuk model yang kamu suka. Pilihanmu ikut terkirim saat memesan.</p>
+    <div class="gtools"><input type="text" id="gq" placeholder="Cari model, contoh: fade" aria-label="Cari model rambut" autocomplete="off"></div>
     <div class="chips gfilter" id="gf"></div>
+    <p class="cnt" id="gc"></p>
     <div class="gal" id="gal"></div>
+    <div id="more" style="text-align:center;margin-top:22px"></div>
     <div class="pick" id="pick" hidden>
       <div><span>Model dipilih</span><br><b id="pickName"></b></div>
       <div><a class="btn sm" href="#pesan">Lanjut pesan</a> <button class="btn sm ghost" type="button" id="pickClear">Batalkan</button></div>
@@ -261,14 +271,12 @@ body::before{
 <script>
 var C = (typeof CONFIG !== "undefined") ? CONFIG : {};
 
-/* Model cadangan: dipakai kalau config.js belum punya blok "gaya" */
+/* Daftar cadangan: dipakai kalau config.js belum punya blok "gaya" */
 var G = (C.gaya && C.gaya.length) ? C.gaya : [
-  { nama: "Low Fade", kategori: "Fade", tipe: "fade", foto: "" },
-  { nama: "Side Part", kategori: "Klasik", tipe: "part", foto: "" },
-  { nama: "Pompadour", kategori: "Klasik", tipe: "quiff", foto: "" },
-  { nama: "Textured Crop", kategori: "Kekinian", tipe: "crop", foto: "" },
-  { nama: "Wolf Cut", kategori: "Kekinian", tipe: "long", foto: "" },
-  { nama: "Jenggot Rapi", kategori: "Jenggot", tipe: "buzz+beard", foto: "" }
+  { nama: "Low Fade", kategori: "Fade" },
+  { nama: "Side Part", kategori: "Klasik" },
+  { nama: "Textured Crop", kategori: "Kekinian" },
+  { nama: "Jenggot Rapi", kategori: "Jenggot" }
 ];
 
 var $ = function(id){return document.getElementById(id)};
@@ -296,31 +304,24 @@ lines($("alamat"), C.alamat);
 lines($("kontakInfo"), ["WhatsApp " + C.nomorTampil, "Instagram " + C.instagram]);
 $("foot").textContent = "\u00A9 " + new Date().getFullYear() + " " + C.nama + " Barbershop";
 
-/* ---- ilustrasi cadangan model rambut (dipakai kalau foto belum ada) ---- */
-var HAIRS = {
-  buzz:  '<path d="M26 52Q24 26 50 24Q76 26 74 52Q70 40 50 38Q30 40 26 52Z"/>',
-  fade:  '<path d="M26 52Q22 22 50 16Q78 22 74 52Q72 40 66 34Q50 28 34 34Q28 40 26 52Z"/>',
-  quiff: '<path d="M24 54Q14 10 54 6Q88 8 76 54Q72 28 52 26Q30 28 24 54Z"/>',
-  part:  '<path d="M24 54Q20 20 50 18Q80 20 76 54Q72 34 58 30Q44 28 34 34Q26 40 24 54Z"/><path d="M40 22Q42 28 36 33" fill="none" stroke="#d9b48f" stroke-width="1.5"/>',
-  long:  '<path d="M22 76Q14 16 50 12Q86 16 78 76L71 76Q72 36 50 32Q28 36 29 76Z"/>',
-  curly: '<path d="M26 52Q24 26 50 24Q76 26 74 52Q70 40 50 38Q30 40 26 52Z"/><circle cx="32" cy="36" r="10"/><circle cx="44" cy="26" r="11"/><circle cx="58" cy="26" r="11"/><circle cx="69" cy="36" r="10"/><circle cx="50" cy="34" r="10"/>',
-  hawk:  '<path d="M26 52Q24 26 50 24Q76 26 74 52Q70 40 50 38Q30 40 26 52Z"/><path d="M40 34Q42 4 50 2Q58 4 60 34Z"/>',
-  crop:  '<path d="M25 54Q20 22 50 20Q80 22 75 54Q72 40 68 38L64 42L58 37L52 42L46 37L40 42L34 38Q28 42 25 54Z"/>',
-  beard: '<path d="M27 58Q28 94 50 94Q72 94 73 58Q68 78 50 78Q32 78 27 58Z"/>'
-};
-function art(t){
-  var h = "";
-  (t || "fade").split("+").forEach(function(p){ if (HAIRS[p]) h += HAIRS[p]; });
-  return '<svg viewBox="0 0 100 125" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-    '<path d="M8 125Q10 100 50 98Q90 100 92 125Z" fill="#c9a96a" fill-opacity=".35"/>' +
-    '<rect x="42" y="80" width="16" height="22" fill="#c79f78"/>' +
-    '<circle cx="26" cy="58" r="4.5" fill="#d9b48f"/><circle cx="74" cy="58" r="4.5" fill="#d9b48f"/>' +
-    '<ellipse cx="50" cy="56" rx="24" ry="30" fill="#d9b48f"/>' +
-    '<g fill="#2a2622">' + h + '</g></svg>';
-}
-
 /* ---- galeri model rambut ---- */
-var st = {svc:[], brb:"Siapa saja", date:0, time:null, model:null, kat:"Semua"};
+var st = {svc:[], brb:"Siapa saja", date:0, time:null, model:null, kat:"Semua", q:"", lim:8};
+var ADMIN = /[?&]admin/.test(location.search);   /* buka website dengan ?admin untuk melihat nama file foto */
+var SCISSORS = '<svg viewBox="0 0 48 48" fill="none" stroke="#c9a96a" stroke-opacity=".7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="35" r="6"/><circle cx="35" cy="35" r="6"/><path d="M17 31L36 8M31 31L12 8"/></svg>';
+
+function slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); }
+function fotoList(g){
+  if (g.foto) return [g.foto];
+  var s = slug(g.nama);
+  return ["foto/" + s + ".jpg", s + ".jpg"];
+}
+function placeholder(im, g){
+  var p = el("div",undefined,"ph");
+  p.innerHTML = SCISSORS;
+  p.appendChild(el("span","Foto segera hadir"));
+  if (ADMIN) p.appendChild(el("small","Upload: " + fotoList(g)[0]));
+  im.appendChild(p);
+}
 
 function drawFilter(){
   $("gf").innerHTML = "";
@@ -328,30 +329,46 @@ function drawFilter(){
   G.forEach(function(g){ if (cats.indexOf(g.kategori) < 0) cats.push(g.kategori); });
   cats.forEach(function(c){
     var b = el("button", c, "chip"+(st.kat===c?" on":"")); b.type="button";
-    b.onclick = function(){ st.kat=c; drawFilter(); drawGal(); };
+    b.onclick = function(){ st.kat=c; st.lim=8; drawFilter(); drawGal(); };
     $("gf").appendChild(b);
   });
 }
 function drawGal(){
-  $("gal").innerHTML = "";
+  $("gal").innerHTML = ""; $("more").innerHTML = "";
+  var q = st.q.toLowerCase(), list = [];
   G.forEach(function(g,i){
     if (st.kat !== "Semua" && g.kategori !== st.kat) return;
+    if (q && (g.nama + " " + g.kategori).toLowerCase().indexOf(q) < 0) return;
+    list.push(i);
+  });
+  var shown = list.slice(0, st.lim);
+  $("gc").textContent = list.length ? "Menampilkan " + shown.length + " dari " + list.length + " model" : "Model tidak ditemukan. Coba kata lain.";
+  shown.forEach(function(i){
+    var g = G[i];
     var b = el("button",undefined,"g"+(st.model===i?" on":"")); b.type="button";
     b.setAttribute("aria-pressed", st.model===i ? "true" : "false");
     var im = el("div",undefined,"im");
-    var ill = function(){ im.innerHTML = art(g.tipe); im.appendChild(el("span","Ilustrasi","lb")); };
-    if (g.foto) {
-      var img = new Image(); img.alt = g.nama; img.loading = "lazy";
-      img.onerror = function(){ img.remove(); ill(); };
-      img.src = g.foto;
-      im.appendChild(img);
-    } else { ill(); }
+    var cs = fotoList(g), k = 0;
+    var img = new Image(); img.alt = g.nama; img.loading = "lazy";
+    img.onerror = function(){
+      k++;
+      if (k < cs.length) { img.src = cs[k]; }
+      else { img.remove(); placeholder(im, g); }
+    };
+    img.src = cs[0];
+    im.appendChild(img);
     var tx = el("div",undefined,"tx"); tx.appendChild(el("b",g.nama)); tx.appendChild(el("small",g.kategori));
     b.appendChild(im); b.appendChild(tx); b.appendChild(el("span","Dipilih","ck"));
     b.onclick = function(){ st.model = (st.model===i ? null : i); drawGal(); upd(); };
     $("gal").appendChild(b);
   });
+  if (list.length > shown.length) {
+    var m = el("button","Lihat lebih banyak (" + (list.length - shown.length) + " lagi)","btn ghost"); m.type="button"; m.style.margin="0";
+    m.onclick = function(){ st.lim += 12; drawGal(); };
+    $("more").appendChild(m);
+  }
 }
+$("gq").addEventListener("input", function(){ st.q = this.value.trim(); st.lim = 8; drawGal(); });
 $("pickClear").onclick = function(){ st.model=null; drawGal(); upd(); };
 
 /* ---- fitur pemesanan ---- */
