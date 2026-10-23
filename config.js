@@ -6,11 +6,11 @@
 var CONFIG = {
 
   // ---------- IDENTITAS ----------
-  nama: "Pangkas Jaya",                 // nama barbershop
-  whatsapp: "6281234567890",            // nomor WA: awali 62, tanpa 0 di depan
-  nomorTampil: "0812-3456-7890",        // nomor yang tampil di website
+  nama: "Kage BarberShop",                 // nama barbershop
+  whatsapp: "+62885179529030",            // nomor WA: awali 62, tanpa 0 di depan
+  nomorTampil: "0851-7952-9030",        // nomor yang tampil di website
   instagram: "@pangkasjaya",
-  alamat: ["Jl. Contoh Raya No. 12", "Kota Anda, 12345"],
+  alamat: ["Sungai Jawi , Jln Apel , Gg apel 5 no 34"],
 
   // ---------- TEKS UTAMA ----------
   judul: "Rapi tanpa antre.",
