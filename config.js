@@ -5,6 +5,10 @@
 
 var CONFIG = {
 
+  // ---------- VERSI FOTO ----------
+  // naikkan angka ini (2 jadi 3, dst) setiap kali menambah/mengganti foto di folder foto/
+  versi: 2,
+
   // ---------- IDENTITAS ----------
   nama: "Kage BarberShop",              // nama barbershop
   whatsapp: "6285179529030",            // nomor WA: awali 62, tanpa 0 di depan
@@ -25,9 +29,9 @@ var CONFIG = {
 
   // ---------- JAM BUKA ----------
   jamBuka: [
-    ["Senin – Jumat", "10.00 – 21.00"],
-    ["Sabtu", "09.00 – 22.00"],
-    ["Minggu", "11.00 – 20.00"]
+    ["Senin - Jumat", "10.00 - 21.00"],
+    ["Sabtu", "09.00 - 22.00"],
+    ["Minggu", "11.00 - 20.00"]
   ],
 
   // ---------- LAYANAN DAN HARGA ----------
@@ -60,7 +64,7 @@ var CONFIG = {
     // ----- FADE -----
     { nama: "Low Fade", kategori: "Fade" },
     { nama: "Mid Fade", kategori: "Fade" },
-    { nama: "High Fade", kategori: "Fade", foto: "https://i.ibb.co/2YHhHZqh/images-1.jpg" },
+    { nama: "High Fade", kategori: "Fade" },
     { nama: "Skin Fade", kategori: "Fade" },
     { nama: "Burst Fade", kategori: "Fade" },
     { nama: "Drop Fade", kategori: "Fade" },
