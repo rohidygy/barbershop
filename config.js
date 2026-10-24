@@ -13,8 +13,8 @@ var CONFIG = {
   alamat: ["Sungai Jawi Luar , Jl apel , Gg apel 5 no 34"],
 
   // ---------- TEKS UTAMA ----------
-  judul: "Rapi tanpa antre.",
-  deskripsi: "Pilih layanan, barber, dan jam. Selesai dalam satu menit, konfirmasi langsung lewat WhatsApp.",
+  judul: "Percaya diri|mulai di sini.",   // tanda | = pindah baris
+  deskripsi: "Barber berpengalaman 10+ tahun siap merapikan gayamu.",
 
   // ---------- KEUNGGULAN (3 angka di bawah judul) ----------
   keunggulan: [
