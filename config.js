@@ -58,9 +58,9 @@ var CONFIG = {
     { nama: "Skin Fade", kategori: "Fade", foto: "https://i.ibb.co.com/wrgpt8WK/images-2.jpg" },
     { nama: "Burst Fade", kategori: "Fade", foto: "https://i.ibb.co.com/yFF9NQGf/images-3.jpg" },
     { nama: "Drop Fade", kategori: "Fade", foto: "https://i.ibb.co.com/HpdHbmLm/images-4.jpg" },
-    { nama: "Taper Fade", kategori: "Fade" },
-    { nama: "Temple Fade", kategori: "Fade" },
-    { nama: "Shadow Fade", kategori: "Fade" },
+    { nama: "Taper Fade", kategori: "Fade", foto: "https://i.ibb.co.com/Y4mGXfcp/unnamed.jpg" },
+    { nama: "Temple Fade", kategori: "Fade", foto: "https://i.ibb.co.com/k2Jx0mws/aea501ed3f58c472fd982e4992225bdd.jpg" },
+    { nama: "Shadow Fade", kategori: "Fade", foto: "https://i.ibb.co.com/qFx22VzK/438e24bad31330317c7abf937203fa06.jpg" },
 
     // ----- KLASIK -----
     { nama: "Side Part", kategori: "Klasik" },
