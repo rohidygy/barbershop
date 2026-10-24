@@ -69,7 +69,7 @@ var CONFIG = {
     { nama: "Quiff", kategori: "Klasik", foto: "https://i.ibb.co.com/5tZ33SB/images-6.jpg" }, 
     { nama: "Ivy League", kategori: "Klasik", foto: "https://i.ibb.co.com/GQbwfLVk/0701df3530468cde7dfd7bf30e4d5639.jpg" },
     { nama: "Crew Cut", kategori: "Klasik", foto: "https://i.ibb.co.com/1tRRgd1K/unnamed-1.jpg" },
-    { nama: "Comb Over", kategori: "Klasik", foto: "https://i.ibb.co.com/bRvLy9mL/images-7.jpg" },
+    { nama: "Comb Over", kategori: "Klasik", foto: "https://i.ibb.co.com/cXCn9Qhz/images-8.jpg" },
     { nama: "Regular Taper", kategori: "Klasik", foto: "https://i.ibb.co.com/vv1mtpLt/134397579.avif" },
 
     // ----- KEKINIAN -----
