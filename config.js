@@ -7,7 +7,7 @@ var CONFIG = {
 
   // ---------- VERSI FOTO ----------
   // naikkan angka ini (2 jadi 3, dst) setiap kali menambah/mengganti foto di folder foto/
-  versi: 2,
+  versi: 2,1,
 
   // ---------- IDENTITAS ----------
   nama: "Kage BarberShop",              // nama barbershop
