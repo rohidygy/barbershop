@@ -12,7 +12,12 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💈</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=5">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<script>
+/* Versi otomatis: berganti tiap 5 menit, jadi pengunjung selalu dapat file terbaru tanpa hapus cache */
+var VER = Math.floor(Date.now() / 300000);
+document.write('<link rel="stylesheet" href="style.css?v=' + VER + '">');
+</script>
 </head>
 <body>
 <header>
@@ -151,11 +156,10 @@
 <div class="bar"><div><b id="bT">Rp 0</b><small id="bC">Belum ada layanan</small></div><a class="btn" href="#pesan">Lanjut pesan<svg class="ic ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 
 <!-- Data diambil dari config.js. Pastikan file config.js ada di folder yang sama. -->
-<script src="config.js?v=5" charset="utf-8"></script>
-<script src="pembayaran.js?v=5" charset="utf-8"></script>
-<script src="lokasi.js?v=5" charset="utf-8"></script>
-<script src="jadwal.js?v=5" charset="utf-8"></script>
-<script src="ulasan.js?v=5" charset="utf-8"></script>
-<script src="app.js?v=5" charset="utf-8"></script>
+<script>
+["config","pembayaran","lokasi","jadwal","ulasan","app"].forEach(function(n){
+  document.write('<script src="' + n + '.js?v=' + VER + '" charset="utf-8"><\/script>');
+});
+</script>
 </body>
 </html>
