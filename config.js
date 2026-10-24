@@ -57,7 +57,7 @@ var CONFIG = {
     { nama: "High Fade", kategori: "Fade", foto: "https://i.ibb.co.com/2YHhHZqh/images-1.jpg" },
     { nama: "Skin Fade", kategori: "Fade", foto: "https://i.ibb.co.com/wrgpt8WK/images-2.jpg" },
     { nama: "Burst Fade", kategori: "Fade", foto: "https://i.ibb.co.com/yFF9NQGf/images-3.jpg" },
-    { nama: "Drop Fade", kategori: "Fade" },
+    { nama: "Drop Fade", kategori: "Fade", foto: "https://i.ibb.co.com/HpdHbmLm/images-4.jpg" },
     { nama: "Taper Fade", kategori: "Fade" },
     { nama: "Temple Fade", kategori: "Fade" },
     { nama: "Shadow Fade", kategori: "Fade" },
