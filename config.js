@@ -73,14 +73,14 @@ var CONFIG = {
     { nama: "Regular Taper", kategori: "Klasik", foto: "https://i.ibb.co.com/vv1mtpLt/134397579.avif" },
 
     // ----- KEKINIAN -----
-    { nama: "Textured Crop", kategori: "Kekinian" },
-    { nama: "French Crop", kategori: "Kekinian" },
-    { nama: "Edgar Cut", kategori: "Kekinian" },
-    { nama: "Mullet Modern", kategori: "Kekinian" },
-    { nama: "Faux Hawk", kategori: "Kekinian" },
-    { nama: "Buzz Cut", kategori: "Kekinian" },
-    { nama: "Bowl Cut Modern", kategori: "Kekinian" },
-    { nama: "Spiky Texture", kategori: "Kekinian" },
+    { nama: "Textured Crop", kategori: "Kekinian", foto: "https://i.ibb.co.com/WNHjLbwG/textured-crop-blog-b23cb4de-cab3-421c-8462-824b54aa0652.webp" },
+    { nama: "French Crop", kategori: "Kekinian", foto: "https://i.ibb.co.com/fdK7Sw9K/images-9.jpg" },
+    { nama: "Edgar Cut", kategori: "Kekinian", foto: "https://i.ibb.co.com/svW5m6Kg/image-7.webp" },
+    { nama: "Mullet Modern", kategori: "Kekinian", foto: "https://i.ibb.co.com/FqwjvTLj/images-10.jpg" },
+    { nama: "Faux Hawk", kategori: "Kekinian", foto: "https://i.ibb.co.com/C3GWyYfr/images-11.jpg" },
+    { nama: "Buzz Cut", kategori: "Kekinian", foto: "https://i.ibb.co.com/hF41QBfF/images-12.jpg" },
+    { nama: "Bowl Cut Modern", kategori: "Kekinian", foto: "https://i.ibb.co.com/1GYtvBVK/images-13.jpg" },
+    { nama: "Spiky Texture", kategori: "Kekinian", foto: "https://i.ibb.co.com/WWh8Pxx4/images-14.jpg" },
 
     // ----- GAYA KOREA -----
     { nama: "Comma Hair", kategori: "Gaya Korea" },
