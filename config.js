@@ -6,7 +6,7 @@
 var CONFIG = {
 
   // ---------- VERSI FOTO ----------
-  versi: 4,
+  versi: 5,
 
   // ---------- IDENTITAS ----------
   nama: "Kage BarberShop",
