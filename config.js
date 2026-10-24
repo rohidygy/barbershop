@@ -135,5 +135,11 @@ var CONFIG = {
   ],
 
   // ---------- JAM YANG BISA DIPESAN ----------
-  jamPesan: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"]
+  jamPesan: ["10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"],
+
+  // ---------- DP DAN ATURAN PESANAN ----------
+  // dp: nominal DP, angka saja. Isi 0 kalau tidak pakai DP (kotak konfirmasi otomatis hilang)
+  dp: 20000,
+  bayar: "QRIS atau transfer (info rekening dikirim saat konfirmasi)",
+  aturan: "DP dipotong dari total saat cukur. Telat lebih dari 15 menit, jadwal dilepas."
 };
