@@ -58,7 +58,7 @@ var CONFIG = {
   // alamatnya, contoh: https://barbershopkage.my.id/?admin
   gaya: [
     // ----- FADE -----
-    { nama: "Low Fade", kategori: "https://i.ibb.co.com/SDS131TD/9f002a3e028805d8118f50167833d489.jpg" },
+    { nama: "Low Fade", kategori: "Fade", foto: "https://i.ibb.co.com/SDS131TD/9f002a3e028805d8118f50167833d489.jpg" },
     { nama: "Mid Fade", kategori: "Fade" },
     { nama: "High Fade", kategori: "Fade" },
     { nama: "Skin Fade", kategori: "Fade" },
