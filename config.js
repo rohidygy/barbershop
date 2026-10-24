@@ -63,14 +63,14 @@ var CONFIG = {
     { nama: "Shadow Fade", kategori: "Fade", foto: "https://i.ibb.co.com/qFx22VzK/438e24bad31330317c7abf937203fa06.jpg" },
 
     // ----- KLASIK -----
-    { nama: "Side Part", kategori: "Klasik" },
-    { nama: "Pompadour", kategori: "Klasik" },
-    { nama: "Slick Back", kategori: "Klasik" },
-    { nama: "Quiff", kategori: "Klasik" },
-    { nama: "Ivy League", kategori: "Klasik" },
-    { nama: "Crew Cut", kategori: "Klasik" },
-    { nama: "Comb Over", kategori: "Klasik" },
-    { nama: "Regular Taper", kategori: "Klasik" },
+    { nama: "Side Part", kategori: "Klasik", foto: "https://i.ibb.co.com/ds60xbQd/images-5.jpg" },
+    { nama: "Pompadour", kategori: "Klasik", foto: "https://i.ibb.co.com/CFH3xjC/58d4da-bb7bdedef0004e3d87867902cbc947a4-mv2.avif" },
+    { nama: "Slick Back", kategori: "Klasik", foto: "https://i.ibb.co.com/0jtvSkgh/SQ-DP-B4.jpg" },
+    { nama: "Quiff", kategori: "Klasik", foto: "https://i.ibb.co.com/5tZ33SB/images-6.jpg" }, 
+    { nama: "Ivy League", kategori: "Klasik", foto: "https://i.ibb.co.com/GQbwfLVk/0701df3530468cde7dfd7bf30e4d5639.jpg" },
+    { nama: "Crew Cut", kategori: "Klasik", foto: "https://i.ibb.co.com/1tRRgd1K/unnamed-1.jpg" },
+    { nama: "Comb Over", kategori: "Klasik", foto: "https://i.ibb.co.com/bRvLy9mL/images-7.jpg" },
+    { nama: "Regular Taper", kategori: "Klasik", foto: "https://i.ibb.co.com/vv1mtpLt/134397579.avif" },
 
     // ----- KEKINIAN -----
     { nama: "Textured Crop", kategori: "Kekinian" },
