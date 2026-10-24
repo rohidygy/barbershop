@@ -108,7 +108,21 @@ input::placeholder{color:#7d8f83}
 footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
 :focus-visible{outline:3px solid var(--brass2);outline-offset:3px}
 
-
+/* ===== LATAR BELAKANG POLA BERGERAK ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-220px;
+  z-index:-1;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220' fill='none' stroke='rgb(201,169,106)' stroke-opacity='0.12' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><g transform='rotate(-18 50 50)'><circle cx='38' cy='72' r='8'/><circle cx='62' cy='72' r='8'/><path d='M41 65L66 24M59 65L34 24'/></g><g transform='rotate(14 150 55)'><rect x='120' y='46' width='60' height='14' rx='3'/><path d='M126 60v14M134 60v14M142 60v14M150 60v14M158 60v14M166 60v14M174 60v14'/></g><g transform='rotate(12 50 165)'><rect x='40' y='140' width='20' height='52' rx='4'/><path d='M40 152l20-8M40 166l20-8M40 180l20-8M44 136h12M44 196h12'/></g><g transform='rotate(-16 150 170)'><rect x='118' y='164' width='46' height='10' rx='5'/><path d='M164 169l28-9v12z'/></g></svg>");
+  background-size:220px 220px;
+  animation:geser 40s linear infinite;
+}
+@keyframes geser{
+  from{transform:translate(0,0)}
+  to{transform:translate(220px,220px)}
+}
 
 /* ===== TIANG BARBER BERGERAK ===== */
 .hero .wrap{position:relative}
@@ -132,58 +146,7 @@ footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-}
-
-/* ===== ANIMASI GUNTING ===== */
-.gunting{width:44px;height:24px;display:block;overflow:visible}
-.gunting .ba,.gunting .bb{transform-origin:20px 12px;--s:1}
-.gunting .bb{--s:-1}
-.gunting .bl{fill:var(--brass2)}
-.gunting .rg{fill:none;stroke:var(--brass);stroke-width:2}
-.gunting .sh{stroke:var(--brass);stroke-width:2.2;stroke-linecap:round}
-.gunting .pv{fill:var(--bg)}
-@keyframes snip{0%,100%{transform:rotate(calc(var(--s)*20deg))}50%{transform:rotate(0deg)}}
-@keyframes snipIdle{0%,70%,100%{transform:rotate(calc(var(--s)*20deg))}78%,90%{transform:rotate(0deg)}84%{transform:rotate(calc(var(--s)*20deg))}}
-.gunting .ba,.gunting .bb{transform:rotate(calc(var(--s)*20deg))}
-
-/* garis potong di bawah judul bagian */
-.cutline{position:relative;height:26px;max-width:340px;margin:2px 0 14px}
-.cutline::before{content:"";position:absolute;left:0;top:50%;height:0;width:0;border-top:2px dashed rgba(201,169,106,.55);transform:translateY(-50%)}
-.cutline .gunting{position:absolute;left:0;top:1px}
-.cutline.in::before{animation:garis 1.6s linear forwards}
-.cutline.in .gunting{animation:jalan 1.6s linear forwards}
-.cutline.in .ba,.cutline.in .bb{animation:snip .2s 8, snipIdle 4s 1.6s infinite}
-@keyframes garis{to{width:calc(100% - 22px)}}
-@keyframes jalan{to{left:calc(100% - 44px)}}
-
-/* gunting kecil di menu navigasi saat disentuh */
-nav a{position:relative}
-nav a .gunting{position:absolute;left:50%;bottom:-17px;width:28px;height:15px;margin-left:-14px;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;pointer-events:none}
-nav a:hover .gunting,nav a:focus-visible .gunting{opacity:1;transform:none}
-nav a:hover .ba,nav a:hover .bb,nav a:focus-visible .ba,nav a:focus-visible .bb{animation:snip .28s infinite}
-
-@media(prefers-reduced-motion:reduce){
-  .cutline.in::before{animation:none;width:calc(100% - 22px)}
-  .cutline.in .gunting{animation:none;left:calc(100% - 44px)}
-  .cutline.in .ba,.cutline.in .bb,nav a:hover .ba,nav a:hover .bb{animation:none}
-}
-
-/* ===== HERO: LAMPU GANTUNG VINTAGE ===== */
-.hero{position:relative;overflow:hidden;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130' fill='none' stroke='rgb(201,169,106)' stroke-opacity='.09' stroke-width='1.3' stroke-linecap='round'%3E%3Cg transform='translate(12 14)'%3E%3Ccircle cx='5' cy='26' r='4'/%3E%3Ccircle cx='19' cy='26' r='4'/%3E%3Cpath d='M7 22L26 2M17 22L-2 2'/%3E%3C/g%3E%3Cg transform='translate(72 16)'%3E%3Crect width='38' height='8' rx='2'/%3E%3Cpath d='M5 8v11M12 8v11M19 8v11M26 8v11M33 8v11'/%3E%3C/g%3E%3Cg transform='translate(14 78)'%3E%3Cpath d='M0 22Q0 8 14 8Q28 8 28 22Z'/%3E%3Cpath d='M14 -4V8'/%3E%3C/g%3E%3Cg transform='translate(74 80)'%3E%3Cpath d='M0 8h28l2 4H0z'/%3E%3Cpath d='M30 12L42 4'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:130px 130px}
-.lamp{position:absolute;right:215px;top:-84px;width:170px;height:auto;overflow:visible;z-index:-1;pointer-events:none}
-.lamp svg{display:block;width:100%;height:auto;overflow:visible}
-.lamp .glow{animation:nyala 3.5s ease-in-out infinite}
-@keyframes nyala{0%,100%{opacity:1}50%{opacity:.72}}
-@media(max-width:820px){
-  .lamp{right:6px;top:-84px;width:104px}
-  .logo{font-size:1.25rem;white-space:nowrap}
-  nav .pill{white-space:nowrap;padding:7px 14px;font-size:.9rem}
-}
-@media(prefers-reduced-motion:reduce){
-  .lamp .glow{animation:none}
+  body::before{animation:none}
 }
 </style>
 </head>
@@ -198,17 +161,6 @@ nav a:hover .ba,nav a:hover .bb,nav a:focus-visible .ba,nav a:focus-visible .bb{
 <main>
 <section class="hero">
   <div class="wrap">
-    <div class="lamp" aria-hidden="true">
-      <svg viewBox="0 0 170 1400" xmlns="http://www.w3.org/2000/svg" focusable="false">
-        <polygon points="40,184 130,184 436,1400 -266,1400" fill="#f3d38a" fill-opacity=".09"/>
-        <polygon points="62,184 108,184 260,1400 -90,1400" fill="#f3d38a" fill-opacity=".08"/>
-        <path d="M85 0V126" stroke="#c9a96a" stroke-width="1.5" fill="none"/>
-        <rect x="78" y="126" width="14" height="10" rx="2" fill="#1d3b30" stroke="#c9a96a" stroke-width="1.5"/>
-        <path d="M38 184Q38 142 85 138Q132 142 132 184Z" fill="#1d3b30" stroke="#c9a96a" stroke-width="1.5"/>
-        <path d="M32 184H138" stroke="#c9a96a" stroke-width="2" fill="none"/>
-        <g class="glow"><circle cx="85" cy="194" r="22" fill="#f3d38a" fill-opacity=".22"/><circle cx="85" cy="194" r="8" fill="#f3d38a"/></g>
-      </svg>
-    </div>
     <div class="pole">
       <svg id="pole" viewBox="0 0 160 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tiang barbershop berputar">
         <defs>
@@ -494,40 +446,6 @@ $("go").onclick = function(){
   window.open("https://wa.me/" + C.whatsapp + "?text=" + encodeURIComponent(msg), "_blank");
 };
 drawFilter(); drawGal(); drawSvc(); drawBrb(); drawDates(); drawTimes(); upd();
-</script>
-
-<script>
-/* ===== ANIMASI GUNTING: dipasang otomatis di menu dan judul bagian ===== */
-(function(){
-  var SVG = '<svg class="gunting" viewBox="0 0 40 24" aria-hidden="true" focusable="false">' +
-    '<g class="ba"><circle class="rg" cx="5" cy="12" r="3.6"/><line class="sh" x1="8.6" y1="12" x2="20" y2="12"/><polygon class="bl" points="20,10.4 39,12 20,13.6"/></g>' +
-    '<g class="bb"><circle class="rg" cx="5" cy="12" r="3.6"/><line class="sh" x1="8.6" y1="12" x2="20" y2="12"/><polygon class="bl" points="20,10.4 39,12 20,13.6"/></g>' +
-    '<circle class="pv" cx="20" cy="12" r="1.7"/></svg>';
-
-  // 1) gunting kecil di setiap menu navigasi
-  var links = document.querySelectorAll("nav a");
-  for (var i = 0; i < links.length; i++) links[i].insertAdjacentHTML("beforeend", SVG);
-
-  // 2) garis potong + gunting jalan di bawah setiap judul bagian
-  var heads = document.querySelectorAll("section h2");
-  var lines = [];
-  for (var j = 0; j < heads.length; j++) {
-    var d = document.createElement("div");
-    d.className = "cutline";
-    d.setAttribute("aria-hidden", "true");
-    d.innerHTML = SVG;
-    heads[j].insertAdjacentElement("afterend", d);
-    lines.push(d);
-  }
-  if ("IntersectionObserver" in window) {
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-    }, {threshold: .6});
-    lines.forEach(function(l){ io.observe(l); });
-  } else {
-    lines.forEach(function(l){ l.classList.add("in"); });
-  }
-})();
 </script>
 </body>
 </html>
