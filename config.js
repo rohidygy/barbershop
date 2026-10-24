@@ -6,18 +6,17 @@
 var CONFIG = {
 
   // ---------- VERSI FOTO ----------
-  // naikkan angka ini (2 jadi 3, dst) setiap kali menambah/mengganti foto di folder foto/
-  versi: 2,1,
+  versi: 3,
 
   // ---------- IDENTITAS ----------
-  nama: "Kage BarberShop",              // nama barbershop
-  whatsapp: "6285179529030",            // nomor WA: awali 62, tanpa 0 di depan
-  nomorTampil: "0851-7952-9030",        // nomor yang tampil di website
+  nama: "Kage BarberShop",
+  whatsapp: "6285179529030",
+  nomorTampil: "0851-7952-9030",
   instagram: "@kagebarbershop",
   alamat: ["Sungai Jawi Luar , Jl apel , Gg apel 5 no 34"],
 
   // ---------- TEKS UTAMA ----------
-  judul: "Percaya diri|mulai di sini.",   // tanda | = pindah baris
+  judul: "Percaya diri|mulai di sini.",
   deskripsi: "Barber berpengalaman 10+ tahun siap merapikan gayamu.",
 
   // ---------- KEUNGGULAN (3 angka di bawah judul) ----------
@@ -35,7 +34,6 @@ var CONFIG = {
   ],
 
   // ---------- LAYANAN DAN HARGA ----------
-  // harga ditulis angka saja, tanpa titik. Contoh: 40000
   layanan: [
     { nama: "Potong rambut", info: "Konsultasi model, cuci, styling", harga: 40000 },
     { nama: "Cukur jenggot dan kumis", info: "Handuk hangat dan pisau cukur", harga: 25000 },
@@ -52,20 +50,12 @@ var CONFIG = {
   ],
 
   // ---------- MODEL RAMBUT TERBARU (GALERI) ----------
-  // nama     : nama model yang tampil
-  // kategori : untuk tombol filter. Pakai nama yang sama untuk model sejenis
-  // foto     : (BOLEH DIKOSONGKAN / DIHAPUS) kalau tidak ditulis, website otomatis
-  //            mencari foto bernama sesuai nama model, contoh:
-  //            "Mid Fade" -> foto/mid-fade.jpg
-  //            Kalau mau pakai link sendiri, tambahkan: foto: "https://..."
-  // Untuk melihat nama file yang diperlukan, buka websitemu dengan ?admin di belakang
-  // alamatnya, contoh: https://barbershopkage.my.id/?admin
   gaya: [
     // ----- FADE -----
     { nama: "Low Fade", kategori: "Fade" },
     { nama: "Mid Fade", kategori: "Fade" },
     { nama: "High Fade", kategori: "Fade" },
-    { nama: "Skin Fade", kategori: "Fade" },
+    { nama: "Skin Fade", kategori: "Fade", foto: "https://i.ibb.co.com/wrgpt8WK/images-2.jpg" },
     { nama: "Burst Fade", kategori: "Fade" },
     { nama: "Drop Fade", kategori: "Fade" },
     { nama: "Taper Fade", kategori: "Fade" },
