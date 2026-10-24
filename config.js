@@ -54,7 +54,7 @@ var CONFIG = {
     // ----- FADE -----
     { nama: "Low Fade", kategori: "Fade" },
     { nama: "Mid Fade", kategori: "Fade" },
-    { nama: "High Fade", kategori: "Fade" },
+    { nama: "High Fade", kategori: "Fade", foto: "https://i.ibb.co.com/2YHhHZqh/images-1.jpg" },
     { nama: "Skin Fade", kategori: "Fade", foto: "https://i.ibb.co.com/wrgpt8WK/images-2.jpg" },
     { nama: "Burst Fade", kategori: "Fade" },
     { nama: "Drop Fade", kategori: "Fade" },
